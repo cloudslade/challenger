@@ -23,6 +23,13 @@
 		E61A33BD1CA3132B004E5505 /* ChallengerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33BC1CA3132B004E5505 /* ChallengerController.swift */; };
 		E61A33BF1CA31332004E5505 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33BE1CA31332004E5505 /* UserController.swift */; };
 		E61A33C21CA3135C004E5505 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33C11CA3135C004E5505 /* FirebaseController.swift */; };
+		E61A33C41CA344CE004E5505 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33C31CA344CE004E5505 /* SearchUserViewController.swift */; };
+		E61A33C71CA344F7004E5505 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33C61CA344F7004E5505 /* ChallengeViewController.swift */; };
+		E61A33C91CA34506004E5505 /* ChallengerPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33C81CA34506004E5505 /* ChallengerPageViewController.swift */; };
+		E61A33CB1CA3450E004E5505 /* ProfileViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33CA1CA3450E004E5505 /* ProfileViewcontroller.swift */; };
+		E61A33CD1CA34515004E5505 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33CC1CA34515004E5505 /* LoginViewController.swift */; };
+		E61A33CF1CA3451D004E5505 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33CE1CA3451D004E5505 /* CreateAccountViewController.swift */; };
+		E61A33D11CA34530004E5505 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33D01CA34530004E5505 /* UserTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +64,13 @@
 		E61A33BC1CA3132B004E5505 /* ChallengerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengerController.swift; sourceTree = "<group>"; };
 		E61A33BE1CA31332004E5505 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		E61A33C11CA3135C004E5505 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		E61A33C31CA344CE004E5505 /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
+		E61A33C61CA344F7004E5505 /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		E61A33C81CA34506004E5505 /* ChallengerPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengerPageViewController.swift; sourceTree = "<group>"; };
+		E61A33CA1CA3450E004E5505 /* ProfileViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewcontroller.swift; sourceTree = "<group>"; };
+		E61A33CC1CA34515004E5505 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E61A33CE1CA3451D004E5505 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		E61A33D01CA34530004E5505 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +115,8 @@
 				E61A33A21CA311FF004E5505 /* Info.plist */,
 				E61A339A1CA311FF004E5505 /* Main.storyboard */,
 				E61A33961CA311FF004E5505 /* AppDelegate.swift */,
+				E61A33D21CA34538004E5505 /* View */,
+				E61A33C51CA344D6004E5505 /* View Controllers */,
 				E61A33C01CA31338004E5505 /* ModelControllers */,
 				E61A33BB1CA31321004E5505 /* Model */,
 			);
@@ -137,6 +153,27 @@
 				E61A33BE1CA31332004E5505 /* UserController.swift */,
 			);
 			name = ModelControllers;
+			sourceTree = "<group>";
+		};
+		E61A33C51CA344D6004E5505 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E61A33C31CA344CE004E5505 /* SearchUserViewController.swift */,
+				E61A33C61CA344F7004E5505 /* ChallengeViewController.swift */,
+				E61A33C81CA34506004E5505 /* ChallengerPageViewController.swift */,
+				E61A33CA1CA3450E004E5505 /* ProfileViewcontroller.swift */,
+				E61A33CC1CA34515004E5505 /* LoginViewController.swift */,
+				E61A33CE1CA3451D004E5505 /* CreateAccountViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E61A33D21CA34538004E5505 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E61A33D01CA34530004E5505 /* UserTableViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,12 +249,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E61A33CF1CA3451D004E5505 /* CreateAccountViewController.swift in Sources */,
 				E61A33C21CA3135C004E5505 /* FirebaseController.swift in Sources */,
 				E61A33B81CA31315004E5505 /* User.swift in Sources */,
+				E61A33CB1CA3450E004E5505 /* ProfileViewcontroller.swift in Sources */,
+				E61A33D11CA34530004E5505 /* UserTableViewCell.swift in Sources */,
+				E61A33C71CA344F7004E5505 /* ChallengeViewController.swift in Sources */,
 				E61A33971CA311FF004E5505 /* AppDelegate.swift in Sources */,
+				E61A33C41CA344CE004E5505 /* SearchUserViewController.swift in Sources */,
 				E61A33BF1CA31332004E5505 /* UserController.swift in Sources */,
 				E61A33BD1CA3132B004E5505 /* ChallengerController.swift in Sources */,
+				E61A33C91CA34506004E5505 /* ChallengerPageViewController.swift in Sources */,
 				E61A33BA1CA3131D004E5505 /* Challenger.swift in Sources */,
+				E61A33CD1CA34515004E5505 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +423,7 @@
 				E61A33A71CA311FF004E5505 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

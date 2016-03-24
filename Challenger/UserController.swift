@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+class UserController {
+    static let sharedInstance = UserController()
+    var currentUser: User?
+}
