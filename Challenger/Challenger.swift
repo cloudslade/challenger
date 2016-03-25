@@ -17,12 +17,6 @@ class Challenge {
     let receiverID: String
     var status: ChallengeStatus
     
-    enum ChallengeStatus: Int {
-        case pending
-        case declined, accepted
-        case failed, completed
-    }
-    
     init(uniqueID: String, text: String, totalSeconds: NSTimeInterval, senderID: String, receiverID: String, status: ChallengeStatus) {
         self.uniqueID = uniqueID
         self.text = text
@@ -32,4 +26,10 @@ class Challenge {
         self.status = status
     }
     
+}
+
+enum ChallengeStatus: Int {
+    case pending
+    case declined, accepted
+    case failed, completed
 }

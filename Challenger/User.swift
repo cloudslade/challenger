@@ -16,20 +16,21 @@ class User {
     var following: [String] = []
     var friends: [String] {
         var friends: [String] = []
-        for follower in self.following {
+        for follower in self.followers {
             for following in self.following {
                 if follower == following {
                     friends.append(follower)
-                    break // if the match is found break out to the first for loop. Short cicruit basically.
+                    break // if the match is found break out to the first for-loop. Short cicruit.
                 }
             }
         }
         return friends
     }
+    // Another way you could have done this is to check for a match each time the user's followers or following changes using observedataatendpoint and append/remove in the completion block.
     var sentChallenges: [String] = []
     var receivedChallenges: [String] = []
     var pendingChallenges: [String] {
-        let pending = ChallengeController.sharedInstance.allChallengesForCurrentUser.filter({$0.status.rawValue == 1})
+        let pending = ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.filter({$0.status.rawValue == 1})
         var pendingIDs: [String] = []
         for challenge in pending {
             pendingIDs.append(challenge.uniqueID)
@@ -38,7 +39,7 @@ class User {
     }
     // Here we need to make sure we istantiate our ChallengeController before we use this computed property.
     var declinedChallenges: [String] {
-        let declinedChallenges = ChallengeController.sharedInstance.allChallengesForCurrentUser.filter({$0.status.rawValue == 2})
+        let declinedChallenges = ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.filter({$0.status.rawValue == 2})
         var declinedUniqueIds: [String] = []
         for challenge in declinedChallenges {
             declinedUniqueIds.append(challenge.uniqueID)
@@ -46,7 +47,7 @@ class User {
         return declinedUniqueIds
     }
     var acceptedChallenges: [String] {
-        let acceptedChallenges = ChallengeController.sharedInstance.allChallengesForCurrentUser.filter({$0.status.rawValue == 3})
+        let acceptedChallenges = ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.filter({$0.status.rawValue == 3})
         var acceptedChallengeIDs: [String] = []
         for challenge in acceptedChallenges {
             acceptedChallengeIDs.append(challenge.uniqueID)
@@ -54,7 +55,7 @@ class User {
         return acceptedChallengeIDs
     }
     var failedChallenges: [String] {
-        let failedChallenges = ChallengeController.sharedInstance.allChallengesForCurrentUser.filter({$0.status.rawValue == 4})
+        let failedChallenges = ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.filter({$0.status.rawValue == 4})
         var failedChallengeIDs: [String] = []
         for challange in failedChallenges {
             failedChallengeIDs.append(challange.uniqueID)
@@ -62,7 +63,7 @@ class User {
         return failedChallengeIDs
     }
     var completedChallenges: [String] {
-        let completedChallenges = ChallengeController.sharedInstance.allChallengesForCurrentUser.filter({$0.status.rawValue == 5})
+        let completedChallenges = ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.filter({$0.status.rawValue == 5})
         var completedChallengeIDs: [String] = []
         for challenge in completedChallenges {
             completedChallengeIDs.append(challenge.uniqueID)

@@ -7,3 +7,37 @@
 //
 
 import Foundation
+import Firebase
+
+class Firebasecontroller {
+    static let base = Firebase(url: "https://challenger-dylanslade.firebaseio.com/")
+    static let userBase = base.childByAppendingPath("users")
+    static let challangeBase = base.childByAppendingPath("challenges")
+    static let followingBase = base.childByAppendingPath("following")
+    static let followersBase = base.childByAppendingPath("followers")
+    
+    static func createUser(email: String, password: String, completion: (uid: String?) -> Void) {
+        Firebasecontroller.base.createUser(email, password: password) { (error, data) in
+            if error != nil {
+                print("error while creating user in CreateUser() in Firebasecontroller: \(error)")
+                completion(uid: nil)
+            } else {
+                if let uid = data["uid"] as? String {
+                    completion(uid: uid)
+                }
+            }
+        }
+    }
+    
+    static func saveUser(user: User) {
+        let uniqueUserRef = userBase.childByAppendingPath(user.uniqueID)
+        let userDic: [String: AnyObject] = [
+            "username": user.username,
+//            "profilePic": user.profilePic,
+            ChallengeController.kReceivedChallenges : true,
+            ChallengeController.kSentChallenges : true
+        ]
+        uniqueUserRef.setValue(userDic)
+    }
+    
+}
