@@ -41,8 +41,8 @@ class ChallengeController {
                 return
             }
             let challenge = Challenge(uniqueID: firebase.key, text: text, totalSeconds: totalSeconds, senderID: senderID, receiverID: receiverID, status: status)
-            Firebasecontroller.userBase.childByAppendingPath("0c84a23a-cf15-4f60-a4ac-686351014b9d").childByAppendingPath(ChallengeController.kSentChallenges).updateChildValues([firebase.key : status.rawValue])
-            Firebasecontroller.userBase.childByAppendingPath("ba038441-39b7-4aaa-bb38-0e46cec1b79c").childByAppendingPath(ChallengeController.kReceivedChallenges).updateChildValues([firebase.key : status.rawValue])
+            Firebasecontroller.userBase.childByAppendingPath(senderID).childByAppendingPath(ChallengeController.kSentChallenges).updateChildValues([firebase.key : status.rawValue])
+            Firebasecontroller.userBase.childByAppendingPath(receiverID).childByAppendingPath(ChallengeController.kReceivedChallenges).updateChildValues([firebase.key : status.rawValue])
             if senderID == UserController.sharedInstance.currentUser?.uniqueID {
                 ChallengeController.sharedInstance.allSentChallengesForUser.append(challenge)
             } else if receiverID == UserController.sharedInstance.currentUser?.uniqueID {
