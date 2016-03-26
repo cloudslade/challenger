@@ -28,7 +28,7 @@ class Firebasecontroller {
             }
         }
     }
-    
+
     static func saveUser(user: User) {
         let uniqueUserRef = userBase.childByAppendingPath(user.uniqueID)
         let userDic: [String: AnyObject] = [

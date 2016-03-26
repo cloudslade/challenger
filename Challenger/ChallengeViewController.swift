@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ChallengeViewController: UIViewController {
+class ChallengePrototypeViewController: UIViewController {
     
 }

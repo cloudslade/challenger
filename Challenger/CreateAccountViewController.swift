@@ -7,3 +7,17 @@
 //
 
 import UIKit
+
+class CreateAccountViewController: UIViewController {
+    @IBOutlet var profilePicButton: UIButton!
+    @IBOutlet var usernameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    
+    @IBAction func createAccountButtonTapped(sender: UIButton) {
+    }
+    
+    @IBAction func profilePicButtonTapped(sender: UIButton) {
+    }
+    
+}

@@ -10,7 +10,7 @@
         <!--Item-->
         <scene sceneID="rUc-q0-GXS">
             <objects>
-                <viewController id="jYm-l7-sw1" sceneMemberID="viewController">
+                <viewController id="jYm-l7-sw1" customClass="SearchUserViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tpl-Qt-CK5"/>
                         <viewControllerLayoutGuide type="bottom" id="kdm-hY-ctE"/>
@@ -102,7 +102,6 @@
                         <segue destination="JWp-VH-7Cb" kind="relationship" relationship="viewControllers" id="SJo-f3-cLu"/>
                         <segue destination="jYm-l7-sw1" kind="relationship" relationship="viewControllers" id="aiB-CD-sB3"/>
                         <segue destination="PAB-ws-dWG" kind="relationship" relationship="viewControllers" id="fvB-VH-xSW"/>
-                        <segue destination="aCa-NP-OAh" kind="presentation" identifier="toLoginVC" id="Sg5-C6-Fc2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrX-bN-Vcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -115,15 +114,19 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="JWp-VH-7Cb" customClass="ChallengePageViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="item " id="BGj-Cr-JmN"/>
                     <navigationItem key="navigationItem" title="Title" id="vuB-wy-Szy"/>
+                    <connections>
+                        <segue destination="aCa-NP-OAh" kind="presentation" identifier="toLoginVC" id="x9f-B4-Jfe"/>
+                    </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DH7-JN-YPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1512" y="274"/>
         </scene>
-        <!--View Controller-->
+        <!--Login Vew Controller-->
         <scene sceneID="p1u-XI-gn7">
             <objects>
-                <viewController id="aCa-NP-OAh" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOD-gh-IyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="aCa-NP-OAh" customClass="LoginVewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sCj-Kz-5ji"/>
                         <viewControllerLayoutGuide type="bottom" id="CU0-ka-c4t"/>
@@ -151,10 +154,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAY-8u-qqF">
                                 <rect key="frame" x="462" y="357" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="aCa-NP-OAh" eventType="touchUpInside" id="ja2-zl-AVW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOO-Nv-Uai">
                                 <rect key="frame" x="100" y="357" width="123" height="30"/>
                                 <state key="normal" title="Forgot Password?"/>
+                                <connections>
+                                    <action selector="forgotButtonTapped:" destination="aCa-NP-OAh" eventType="touchUpInside" id="Yx1-Mz-TCb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Erd-ad-a5Y">
                                 <rect key="frame" x="247" y="461" width="107" height="30"/>
@@ -163,12 +172,23 @@
                                     <segue destination="FPO-AM-5hd" kind="show" identifier="toCreateAccount" id="OoS-ko-9wP"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ka-AQ-4Vf">
+                                <rect key="frame" x="100" y="426" width="400" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="oMq-N3-QE8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CU0-ka-c4t" firstAttribute="top" secondItem="Erd-ad-a5Y" secondAttribute="bottom" constant="109" id="7DB-WJ-bmQ"/>
+                            <constraint firstItem="Erd-ad-a5Y" firstAttribute="top" secondItem="1Ka-AQ-4Vf" secondAttribute="bottom" constant="14" id="9Go-ct-gg5"/>
                             <constraint firstItem="2lj-wg-e5P" firstAttribute="top" secondItem="dJE-Bm-V6C" secondAttribute="bottom" constant="61" id="9qA-Xu-yCA"/>
                             <constraint firstItem="2lj-wg-e5P" firstAttribute="trailing" secondItem="yAY-8u-qqF" secondAttribute="trailing" id="IjV-2p-w5J"/>
+                            <constraint firstItem="1Ka-AQ-4Vf" firstAttribute="trailing" secondItem="yAY-8u-qqF" secondAttribute="trailing" id="Inh-Qu-7ji"/>
                             <constraint firstItem="2lj-wg-e5P" firstAttribute="centerX" secondItem="Erd-ad-a5Y" secondAttribute="centerX" id="JvF-uw-XVd"/>
                             <constraint firstItem="2lj-wg-e5P" firstAttribute="leading" secondItem="nOO-Nv-Uai" secondAttribute="leading" id="QOp-31-eVd"/>
                             <constraint firstItem="nOO-Nv-Uai" firstAttribute="baseline" secondItem="yAY-8u-qqF" secondAttribute="baseline" id="UOI-zo-fBy"/>
@@ -177,21 +197,26 @@
                             <constraint firstItem="VnD-1x-LZK" firstAttribute="top" secondItem="sCj-Kz-5ji" secondAttribute="bottom" constant="8" symbolic="YES" id="bXf-As-Ykr"/>
                             <constraint firstItem="VnD-1x-LZK" firstAttribute="centerX" secondItem="dJE-Bm-V6C" secondAttribute="centerX" id="cfb-ZK-yuw"/>
                             <constraint firstItem="dJE-Bm-V6C" firstAttribute="top" secondItem="VnD-1x-LZK" secondAttribute="bottom" constant="56" id="gQ8-J8-35V"/>
+                            <constraint firstItem="1Ka-AQ-4Vf" firstAttribute="leading" secondItem="nOO-Nv-Uai" secondAttribute="leading" id="jCV-ZV-ghj"/>
                             <constraint firstItem="dJE-Bm-V6C" firstAttribute="leading" secondItem="2lj-wg-e5P" secondAttribute="leading" id="jqs-z7-fT9"/>
                             <constraint firstItem="dJE-Bm-V6C" firstAttribute="trailing" secondItem="2lj-wg-e5P" secondAttribute="trailing" id="kPy-8y-Qmr"/>
                             <constraint firstItem="nOO-Nv-Uai" firstAttribute="top" secondItem="2lj-wg-e5P" secondAttribute="bottom" constant="24" id="o7p-Sv-cF1"/>
                             <constraint firstItem="dJE-Bm-V6C" firstAttribute="leading" secondItem="i2W-lD-qkH" secondAttribute="leadingMargin" constant="80" id="r60-Ew-vdC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="dJE-Bm-V6C" id="KU5-zE-Huw"/>
+                        <outlet property="errorHandlingLabel" destination="1Ka-AQ-4Vf" id="rUv-j2-XiV"/>
+                        <outlet property="passwordTextField" destination="2lj-wg-e5P" id="szT-vQ-XXl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HOD-gh-IyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="157" y="1056"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Account View Controller-->
         <scene sceneID="H15-co-Vme">
             <objects>
-                <viewController id="FPO-AM-5hd" sceneMemberID="viewController">
+                <viewController id="FPO-AM-5hd" customClass="CreateAccountViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hqE-jy-PWy"/>
                         <viewControllerLayoutGuide type="bottom" id="Qd6-uE-Unk"/>
@@ -200,11 +225,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KvC-rx-m41">
-                                <rect key="frame" x="92" y="156" width="400" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agC-0n-7ed">
                                 <rect key="frame" x="92" y="286" width="400" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -213,6 +233,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="op6-DD-GCd">
                                 <rect key="frame" x="258" y="53" width="69" height="30"/>
                                 <state key="normal" title="Profile Pic"/>
+                                <connections>
+                                    <action selector="profilePicButtonTapped:" destination="FPO-AM-5hd" eventType="touchUpInside" id="0Lc-Dy-nYH"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0QL-jY-B2v">
                                 <rect key="frame" x="92" y="221" width="400" height="30"/>
@@ -222,7 +245,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFO-44-pMQ">
                                 <rect key="frame" x="239" y="378" width="107" height="30"/>
                                 <state key="normal" title="Create Account"/>
+                                <connections>
+                                    <action selector="createAccountButtonTapped:" destination="FPO-AM-5hd" eventType="touchUpInside" id="XjN-jd-dAS"/>
+                                </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KvC-rx-m41">
+                                <rect key="frame" x="92" y="156" width="400" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -241,6 +272,12 @@
                             <constraint firstItem="agC-0n-7ed" firstAttribute="top" secondItem="KvC-rx-m41" secondAttribute="bottom" constant="100" id="v8M-TG-o9g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="0QL-jY-B2v" id="i9X-I6-dBp"/>
+                        <outlet property="passwordTextField" destination="agC-0n-7ed" id="Jpt-dU-UdK"/>
+                        <outlet property="profilePicButton" destination="op6-DD-GCd" id="LUA-IV-rkU"/>
+                        <outlet property="usernameTextField" destination="KvC-rx-m41" id="ka6-Rg-CLN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCw-dy-bZo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -391,28 +428,10 @@
             </objects>
             <point key="canvasLocation" x="1535" y="1056"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Czm-lA-3A9">
-            <objects>
-                <viewController id="v90-VM-VKD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Dic-WH-N0z"/>
-                        <viewControllerLayoutGuide type="bottom" id="GnF-M0-Vww"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="738-UU-Y2i">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qym-v3-bRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2182" y="1056"/>
-        </scene>
-        <!--View Controller-->
+        <!--Challenge Prototype View Controller-->
         <scene sceneID="4OB-1g-i5c">
             <objects>
-                <viewController id="TW0-Ft-PUw" sceneMemberID="viewController">
+                <viewController id="TW0-Ft-PUw" customClass="ChallengePrototypeViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fbb-8K-cUg"/>
                         <viewControllerLayoutGuide type="bottom" id="XpZ-lX-Dt2"/>

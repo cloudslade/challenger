@@ -16,8 +16,11 @@ class ChallengePageViewController: UIPageViewController {
 //            return
 //        }
 //    }
-    override func viewDidLoad() {
-        UserController.sharedInstance.createUser("johnnyboy", email: "yola@gmail.com", password: "1234", profilePic: nil)
-        UserController.sharedInstance.createUser("SallyMay", email: "SallyMay@yahoo.com", password: "123", profilePic: nil)
+    override func viewDidAppear(animated: Bool) {
+        if UserController.sharedInstance.currentUser == nil {
+            self.performSegueWithIdentifier("toLoginVC", sender: nil)
+        }
+//        UserController.sharedInstance.createUser("johnnyboy", email: "yola@gmail.com", password: "1234", profilePic: nil)
+//        UserController.sharedInstance.createUser("SallyMay", email: "SallyMay@yahoo.com", password: "123", profilePic: nil)
     }
 }

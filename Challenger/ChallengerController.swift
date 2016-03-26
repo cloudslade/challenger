@@ -45,8 +45,10 @@ class ChallengeController {
             Firebasecontroller.userBase.childByAppendingPath(receiverID).childByAppendingPath(ChallengeController.kReceivedChallenges).updateChildValues([firebase.key : status.rawValue])
             if senderID == UserController.sharedInstance.currentUser?.uniqueID {
                 ChallengeController.sharedInstance.allSentChallengesForUser.append(challenge)
+                UserController.sharedInstance.currentUser?.sentChallenges.append(challenge.uniqueID)
             } else if receiverID == UserController.sharedInstance.currentUser?.uniqueID {
                 ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.append(challenge)
+                UserController.sharedInstance.currentUser?.receivedChallenges.append(challenge.uniqueID)
             }
         }
     }
@@ -57,7 +59,7 @@ class ChallengeController {
 
 
 
-
+// We need to be sure we are appending the the users sent challenges and received challenges ([String]) resepectively when we create a new challenge
 
 
 

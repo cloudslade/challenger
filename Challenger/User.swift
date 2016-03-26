@@ -79,4 +79,30 @@ class User {
         }
     }
     
+    init(json: [String: AnyObject], uniqueID: String) {
+        self.uniqueID = uniqueID
+        self.username = json["name"] as! String
+        if let sentChallengesDic = json["sentChallenges"] as? [String: Int] {
+            // iterate through every value in the dictionary and 
+            for element in sentChallengesDic {
+                sentChallenges.append(element.0) // IF YOU WANT ACTUAL OBJECTS INSTEAD OF STRINGS COME HERE
+            }
+        } else {
+            // else the user has no sent challenges.
+        }
+        if let receivedChallengesDic = json["receivedChallenges"] as? [String:Int] {
+            for element in receivedChallengesDic {
+                receivedChallenges.append(element.0) // IF YOU WANT ACTUAL OBJECTS INSTEAD OF STRINGS COME HERE
+            }
+        } else {
+            // else the user has no received Challenges
+        }
+    }
+    
 }
+
+
+
+
+
+
