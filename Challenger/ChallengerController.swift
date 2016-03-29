@@ -21,22 +21,28 @@ class ChallengeController {
     var allReceivedChallengesForCurrentUser: [Challenge] = []
     var allSentChallengesForUser: [Challenge] = []
     
-    static func createSentChallengesForUser() -> [Challenge] {
+    static func createSentChallengesForCurrentUser(completion: (challenges: [Challenge]) -> Void) {
         var challenges: [Challenge] = []
         if let sentChallengeIDs = UserController.sharedInstance.currentUser?.sentChallenges {
+            let group = dispatch_group_create()
             for challengeID in sentChallengeIDs {
+                dispatch_group_enter(group)
                 let endpoint = "challenges/" + "\(challengeID)"
                 Firebasecontroller.dataAtEndpoint(endpoint, completion: { (data) in
                     let challange = Challenge(uniqueID: challengeID, json: data)
                     challenges.append(challange)
+                    dispatch_group_leave(group)
                 })
             }
-            return challenges
+            dispatch_group_notify(group, dispatch_get_main_queue(), { 
+                completion(challenges: challenges)
+            })
+        } else {
+            completion(challenges: [])
         }
-        return []
     }
     
-    static func createReceivedChallengesForUser() -> [Challenge] {
+    static func createReceivedChallengesForCurrentUser() -> [Challenge] {
         var challenges: [Challenge] = []
         if let receivedChallengeIDs = UserController.sharedInstance.currentUser?.receivedChallenges {
             for challengeID in receivedChallengeIDs {
@@ -77,12 +83,17 @@ class ChallengeController {
         }
     }
     
-    func setSentChallengesForUser() {
-        ChallengeController.sharedInstance.allSentChallengesForUser = ChallengeController.createSentChallengesForUser()
+    func setSentChallengesForUser(completion: ()->Void) {
+        ChallengeController.createSentChallengesForCurrentUser({ (challenges: [Challenge]) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { 
+                ChallengeController.sharedInstance.allSentChallengesForUser = challenges
+                completion()
+            })
+        })
     }
     
     func setReceivedChallengesForUser() {
-        ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser = ChallengeController.createReceivedChallengesForUser()
+        ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser = ChallengeController.createReceivedChallengesForCurrentUser()
     }
     
 }

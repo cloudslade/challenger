@@ -15,6 +15,12 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     
     @IBAction func createAccountButtonTapped(sender: UIButton) {
+        let username = usernameTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        UserController.sharedInstance.createUser(username, email: email, password: password, profilePic: nil)
+        performSegueWithIdentifier("toChallengePVC", sender: nil)
         
     }
     

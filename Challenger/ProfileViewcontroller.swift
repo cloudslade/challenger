@@ -13,9 +13,15 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ChallengeController.sharedInstance.setSentChallengesForUser()
-        let sentChallengeCount = ChallengeController.sharedInstance.allSentChallengesForUser.count
-        self.pendingChallengesLabel.text = String(sentChallengeCount) + " Sent"
+        ChallengeController.sharedInstance.setSentChallengesForUser() {
+            print(UserController.sharedInstance.currentUser?.sentChallenges)
+            let sentChallengeCount = ChallengeController.sharedInstance.allSentChallengesForUser.count
+            self.pendingChallengesLabel.text = String(sentChallengeCount) + " Sent"
+        }
+//        ChallengeController.createSentChallengesForCurrentUser { (challenges) in
+//                print(challenges)
+//        }
+        
     }
     
     @IBAction func logoutButtonTapped(sender: UIButton) {

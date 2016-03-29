@@ -6,49 +6,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Challenger/ChallengerController.swift"
-            timestampString = "480966877.397007"
+            filePath = "Challenger/FirebaseController.swift"
+            timestampString = "480978646.657418"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "ChallengeController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Challenger.ChallengeController.allSentChallengesForUser.getter : Swift.Array&lt;Challenger.Challenge&gt;"
-                  moduleName = "Challenger"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Lola/Desktop/DevMountain/Challenger/Challenger/ChallengerController.swift"
-                  timestampString = "480967264.184496"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Challenger.ChallengeController.allSentChallengesForUser.setter : Swift.Array&lt;Challenger.Challenge&gt;"
-                  moduleName = "Challenger"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Lola/Desktop/DevMountain/Challenger/Challenger/ChallengerController.swift"
-                  timestampString = "480967264.184743"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "dataAtEndpoint(_:completion:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Challenger/ChallengerController.swift"
-            timestampString = "480967307.564897"
+            timestampString = "480981104.379797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "setSentChallengesForUser()"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "createSentChallengesForCurrentUser(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

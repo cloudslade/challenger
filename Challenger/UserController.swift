@@ -27,6 +27,7 @@ class UserController {
             }
             if let user = user {
                 Firebasecontroller.saveUser(user)
+                self.setCurrentUser(user)
             }
         }
     }
