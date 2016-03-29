@@ -9,8 +9,18 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    @IBOutlet var pendingChallengesLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ChallengeController.createChallenge("Build a hamock", totalSeconds: 543, senderID: "54f41f05-30e5-41b3-838a-5e420401af69", receiverID: "0c84a23a-cf15-4f60-a4ac-686351014b9d", status: .accepted)
+        ChallengeController.sharedInstance.setSentChallengesForUser()
+        let sentChallengeCount = ChallengeController.sharedInstance.allSentChallengesForUser.count
+        self.pendingChallengesLabel.text = String(sentChallengeCount) + " Sent"
     }
+    
+    @IBAction func logoutButtonTapped(sender: UIButton) {
+        // clear all data source in the app
+        // segue to the login screen
+    }
+    
 }

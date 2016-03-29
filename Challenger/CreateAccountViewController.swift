@@ -15,9 +15,11 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     
     @IBAction func createAccountButtonTapped(sender: UIButton) {
+        
     }
     
     @IBAction func profilePicButtonTapped(sender: UIButton) {
+        
     }
     
 }

@@ -20,13 +20,12 @@ class User {
             for following in self.following {
                 if follower == following {
                     friends.append(follower)
-                    break // if the match is found break out to the first for-loop. Short cicruit.
+                    break
                 }
             }
         }
         return friends
     }
-    // Another way you could have done this is to check for a match each time the user's followers or following changes using observedataatendpoint and append/remove in the completion block.
     var sentChallenges: [String] = []
     var receivedChallenges: [String] = []
     var pendingChallenges: [String] {
@@ -37,7 +36,6 @@ class User {
         }
         return pendingIDs
     }
-    // Here we need to make sure we istantiate our ChallengeController before we use this computed property.
     var declinedChallenges: [String] {
         let declinedChallenges = ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.filter({$0.status.rawValue == 2})
         var declinedUniqueIds: [String] = []
@@ -81,21 +79,16 @@ class User {
     
     init(json: [String: AnyObject], uniqueID: String) {
         self.uniqueID = uniqueID
-        self.username = json["name"] as! String
+        self.username = json["username"] as! String
         if let sentChallengesDic = json["sentChallenges"] as? [String: Int] {
-            // iterate through every value in the dictionary and 
             for element in sentChallengesDic {
-                sentChallenges.append(element.0) // IF YOU WANT ACTUAL OBJECTS INSTEAD OF STRINGS COME HERE
+                sentChallenges.append(element.0)
             }
-        } else {
-            // else the user has no sent challenges.
         }
-        if let receivedChallengesDic = json["receivedChallenges"] as? [String:Int] {
+        if let receivedChallengesDic = json["receivedChallenges"] as? [String: Int] {
             for element in receivedChallengesDic {
-                receivedChallenges.append(element.0) // IF YOU WANT ACTUAL OBJECTS INSTEAD OF STRINGS COME HERE
+                receivedChallenges.append(element.0)
             }
-        } else {
-            // else the user has no received Challenges
         }
     }
     

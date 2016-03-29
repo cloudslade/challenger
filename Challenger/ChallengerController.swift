@@ -11,29 +11,53 @@ import Foundation
 class ChallengeController {
     static let kReceivedChallenges = "receivedChallenges"
     static let kSentChallenges = "sentChallenges"
+    private let kText = "text"
+    private let kTotalSeconds = "totalSeconds"
+    private let kStatus = "status"
+    private let kReceiverID = "receiverID"
+    private let kSenderId = "senderID"
     
     static let sharedInstance = ChallengeController()
     var allReceivedChallengesForCurrentUser: [Challenge] = []
-    lazy var allSentChallengesForUser: [Challenge] = []
+    var allSentChallengesForUser: [Challenge] = []
     
-    static func allReceivedChallengesForUser(currentUser: User) -> [Challenge] {
-        //Here you are going to fetch all of the challenges for the specified user from firebase and convert them into challenges.
-        
-        let challenges: [Challenge] = []
-        return challenges
+    static func createSentChallengesForUser() -> [Challenge] {
+        var challenges: [Challenge] = []
+        if let sentChallengeIDs = UserController.sharedInstance.currentUser?.sentChallenges {
+            for challengeID in sentChallengeIDs {
+                let endpoint = "challenges/" + "\(challengeID)"
+                Firebasecontroller.dataAtEndpoint(endpoint, completion: { (data) in
+                    let challange = Challenge(uniqueID: challengeID, json: data)
+                    challenges.append(challange)
+                })
+            }
+            return challenges
+        }
+        return []
     }
     
-    static func allSentChallengesForUser(currentUser: User) -> [Challenge] {
+    static func createReceivedChallengesForUser() -> [Challenge] {
+        var challenges: [Challenge] = []
+        if let receivedChallengeIDs = UserController.sharedInstance.currentUser?.receivedChallenges {
+            for challengeID in receivedChallengeIDs {
+                let endpoint = "challenges/" + "\(challengeID)"
+                Firebasecontroller.dataAtEndpoint(endpoint, completion: { (data) in
+                    let challange = Challenge(uniqueID: challengeID, json: data)
+                    challenges.append(challange)
+                })
+            }
+            return challenges
+        }
         return []
     }
     
     static func createChallenge(text: String, totalSeconds: NSTimeInterval, senderID: String, receiverID: String, status: ChallengeStatus) {
         let firebaseDic: [String: AnyObject] = [
-            "text" : text,
-            "totalSeconds" : totalSeconds,
-            "status" : status.rawValue,
-            "receiverID" : receiverID,
-            "senderID" : senderID
+            ChallengeController.sharedInstance.kText : text,
+            ChallengeController.sharedInstance.kTotalSeconds : totalSeconds,
+            ChallengeController.sharedInstance.kStatus : status.rawValue,
+            ChallengeController.sharedInstance.kReceiverID : receiverID,
+            ChallengeController.sharedInstance.kSenderId : senderID
         ]
         Firebasecontroller.challangeBase.childByAutoId().setValue(firebaseDic) { (error, firebase) in
             if let error = error {
@@ -53,13 +77,16 @@ class ChallengeController {
         }
     }
     
-    // What shall we do when a user changes the status of a challenge ( decline/accept/fail/complete )
+    func setSentChallengesForUser() {
+        ChallengeController.sharedInstance.allSentChallengesForUser = ChallengeController.createSentChallengesForUser()
+    }
+    
+    func setReceivedChallengesForUser() {
+        ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser = ChallengeController.createReceivedChallengesForUser()
+    }
+    
 }
 
-
-
-
-// We need to be sure we are appending the the users sent challenges and received challenges ([String]) resepectively when we create a new challenge
 
 
 

@@ -26,6 +26,16 @@ class Challenge {
         self.status = status
     }
     
+    init(uniqueID: String, json: [String: AnyObject]) {
+        self.uniqueID = uniqueID
+        self.receiverID = json["receiverID"] as! String
+        self.senderID = json["senderID"] as! String
+        let statusRawValue = json["status"] as! Int
+        self.status = ChallengeStatus(rawValue: statusRawValue)!
+        self.text = json["text"] as! String
+        self.totalSeconds = json["totalSeconds"] as! NSTimeInterval
+    }
+    
 }
 
 enum ChallengeStatus: Int {

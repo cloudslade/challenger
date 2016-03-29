@@ -35,14 +35,13 @@ class UserController {
         UserController.sharedInstance.currentUser = user
     }
     
-    static func getUserForUID(uid: String) -> User? {
-        var user: User?
+    static func getUserForUID(uid: String, completion: (user: User) -> Void) {
         Firebasecontroller.userBase.childByAppendingPath(uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if let userDictionaries = snapshot.value as? [String: AnyObject] {
-                user = User(json: userDictionaries, uniqueID: uid)
+            if let userDictionary = snapshot.value as? [String: AnyObject] {
+                let user = User(json: userDictionary, uniqueID: uid)
+                completion(user: user)
             }
         })
-       return user
     }
     
 }

@@ -40,4 +40,11 @@ class Firebasecontroller {
         uniqueUserRef.setValue(userDic)
     }
     
+    static func dataAtEndpoint(endpoint: String, completion: (data: [String: AnyObject]) -> Void) {
+        Firebasecontroller.base.childByAppendingPath(endpoint).observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
+            let data = snapshot.value as! [String: AnyObject]
+            completion(data: data)
+        })
+    }
+    
 }

@@ -21,7 +21,8 @@ class LoginVewController: UIViewController {
     @IBAction func loginButtonTapped(sender: UIButton) {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        Firebasecontroller.base.authUser(email, password: password) { (error, fAuthData) in
+        
+        Firebasecontroller.base.authUser(email, password: password, withCompletionBlock: { (error, fAuthData) -> Void in
             if error != nil {
                 if let errorCode = FAuthenticationError(rawValue: error.code) {
                     switch errorCode {
@@ -40,14 +41,18 @@ class LoginVewController: UIViewController {
                     }
                 }
             } else {
-                // set the current user of the app
                 let uniqueUserID = fAuthData.uid
-                UserController.getUserForUID(uniqueUserID)
-                // I need to write a function that creates a user from the data I put in firebase
-                // I need to set the current user to the user that just logged in.
+                UserController.getUserForUID(uniqueUserID, completion: { (user) in
+                    UserController.sharedInstance.setCurrentUser(user)
+                })
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-        }
+        })
     }
     
 }
+
+// Why doesnt the compiler go into the funciton that called it when it is called and own it up.
+
+
+
