@@ -19,8 +19,11 @@ class CreateAccountViewController: UIViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        UserController.sharedInstance.createUser(username, email: email, password: password, profilePic: nil)
-        performSegueWithIdentifier("toChallengePVC", sender: nil)
+        UserController.sharedInstance.createUser(username, email: email, password: password, profilePic: nil, completion: { (user) -> Void in
+            UserController.sharedInstance.setCurrentUser(user)
+            self.navigationController?.navigationBarHidden = true
+            self.performSegueWithIdentifier("toBeginAgain", sender: nil)
+        })
         
     }
     

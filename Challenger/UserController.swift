@@ -13,21 +13,21 @@ class UserController {
     static let sharedInstance = UserController()
     var currentUser: User?
     
-    func createUser(username: String, email: String, password: String, profilePic: UIImage?) {
+    func createUser(username: String, email: String, password: String, profilePic: UIImage?, completion: (user: User) -> Void) {
         Firebasecontroller.createUser(email, password: password) { (uid) in
             var user: User?
-            if let uniqueID = uid {
+            if let uid = uid {
                 if let profilePic = profilePic {
-                    user = User(uniqueID: uniqueID, username: username, profilePic: profilePic)
+                    user = User(uniqueID: uid, username: username, profilePic: profilePic)
                 } else {
-                    user = User(uniqueID: uniqueID, username: username, profilePic: nil)
+                    user = User(uniqueID: uid, username: username, profilePic: nil)
                 }
             } else {
                 print("FireBaseController.createUser is returning nil")
             }
             if let user = user {
                 Firebasecontroller.saveUser(user)
-                self.setCurrentUser(user)
+                completion(user: user)
             }
         }
     }
