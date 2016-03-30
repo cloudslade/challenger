@@ -9,12 +9,10 @@
 import UIKit
 
 class ChallengePrototypeViewController: UIViewController {
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        if UserController.sharedInstance.currentUser == nil {
-            self.performSegueWithIdentifier("toLoginVC", sender: nil)
-        }
-    }
+    @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet var challengerTextLabel: UILabel!
+    @IBOutlet var timerLabel: UILabel!
+    @IBOutlet var declineButton: UIButton!
+    @IBOutlet var goButton: UIButton!
     
 }
