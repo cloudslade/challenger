@@ -10,11 +10,8 @@ import UIKit
 
 class ChallengePageViewController: UIPageViewController {
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        if UserController.sharedInstance.currentUser == nil {
-            self.performSegueWithIdentifier("toLoginVC", sender: nil)
-        }
-    }
-    
 }
+
+// Well Today I will be spending most of my time using pageViewControllers.
+// 1. Get a single page to display on the screen.
+// 2. User mock data to swipe through pages.

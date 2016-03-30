@@ -24,7 +24,6 @@ class CreateAccountViewController: UIViewController {
             self.navigationController?.navigationBarHidden = true
             self.performSegueWithIdentifier("toBeginAgain", sender: nil)
         })
-        
     }
     
     @IBAction func profilePicButtonTapped(sender: UIButton) {

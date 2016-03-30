@@ -30,6 +30,7 @@
 		E61A33CD1CA34515004E5505 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33CC1CA34515004E5505 /* LoginViewController.swift */; };
 		E61A33CF1CA3451D004E5505 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33CE1CA3451D004E5505 /* CreateAccountViewController.swift */; };
 		E61A33D11CA34530004E5505 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33D01CA34530004E5505 /* UserTableViewCell.swift */; };
+		E675DE291CAC5265009BA54E /* ChallengerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675DE281CAC5265009BA54E /* ChallengerTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +72,7 @@
 		E61A33CC1CA34515004E5505 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E61A33CE1CA3451D004E5505 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		E61A33D01CA34530004E5505 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		E675DE281CAC5265009BA54E /* ChallengerTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengerTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		E61A33C51CA344D6004E5505 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E675DE281CAC5265009BA54E /* ChallengerTabBarViewController.swift */,
 				E61A33C31CA344CE004E5505 /* SearchUserViewController.swift */,
 				E61A33C61CA344F7004E5505 /* ChallengeViewController.swift */,
 				E61A33C81CA34506004E5505 /* ChallengerPageViewController.swift */,
@@ -256,6 +259,7 @@
 				E61A33D11CA34530004E5505 /* UserTableViewCell.swift in Sources */,
 				E61A33C71CA344F7004E5505 /* ChallengeViewController.swift in Sources */,
 				E61A33971CA311FF004E5505 /* AppDelegate.swift in Sources */,
+				E675DE291CAC5265009BA54E /* ChallengerTabBarViewController.swift in Sources */,
 				E61A33C41CA344CE004E5505 /* SearchUserViewController.swift in Sources */,
 				E61A33BF1CA31332004E5505 /* UserController.swift in Sources */,
 				E61A33BD1CA3132B004E5505 /* ChallengerController.swift in Sources */,

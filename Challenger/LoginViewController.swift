@@ -65,7 +65,5 @@ class LoginVewController: UIViewController {
     
 }
 
-// Why doesnt the compiler go into the funciton that called it when it is called and own it up.
-
 
 

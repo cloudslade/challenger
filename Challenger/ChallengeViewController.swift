@@ -10,4 +10,11 @@ import UIKit
 
 class ChallengePrototypeViewController: UIViewController {
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        if UserController.sharedInstance.currentUser == nil {
+            self.performSegueWithIdentifier("toLoginVC", sender: nil)
+        }
+    }
+    
 }
