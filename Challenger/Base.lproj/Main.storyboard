@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="735-wX-t6b" id="AQY-jZ-eHC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bSh-Dj-cGx">
@@ -102,6 +102,7 @@
                         <segue destination="jYm-l7-sw1" kind="relationship" relationship="viewControllers" id="aiB-CD-sB3"/>
                         <segue destination="JWp-VH-7Cb" kind="relationship" relationship="viewControllers" id="wTo-uo-v27"/>
                         <segue destination="PAB-ws-dWG" kind="relationship" relationship="viewControllers" id="fvB-VH-xSW"/>
+                        <segue destination="iox-ik-ekL" kind="presentation" identifier="toLoginVC" id="q7V-cN-ofG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrX-bN-Vcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -111,14 +112,11 @@
         <!--Title-->
         <scene sceneID="TKS-R0-J5U">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DH7-JN-YPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="JWp-VH-7Cb" customClass="ChallengePageViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Challenges" id="BGj-Cr-JmN" userLabel="PVC"/>
                     <navigationItem key="navigationItem" title="Title" id="vuB-wy-Szy"/>
-                    <connections>
-                        <segue destination="iox-ik-ekL" kind="presentation" identifier="toLoginVC" id="8rW-qg-vH3"/>
-                    </connections>
                 </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DH7-JN-YPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1504" y="277"/>
         </scene>
@@ -511,7 +509,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4ob-ID-Ufw" firstAttribute="top" secondItem="Fbb-8K-cUg" secondAttribute="bottom" id="S6s-5S-CvH"/>
                             <constraint firstItem="4ob-ID-Ufw" firstAttribute="leading" secondItem="0yo-I4-Yrj" secondAttribute="leading" id="Tuu-px-f7m"/>
@@ -552,6 +550,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8rW-qg-vH3"/>
+        <segue reference="q7V-cN-ofG"/>
     </inferredMetricsTieBreakers>
 </document>

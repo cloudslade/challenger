@@ -57,8 +57,12 @@ class LoginVewController: UIViewController {
                 let uniqueUserID = fAuthData.uid
                 UserController.getUserForUID(uniqueUserID, completion: { (user) in
                     UserController.sharedInstance.setCurrentUser(user)
+                    ChallengeController.sharedInstance.setReceivedChallengesForUser ({
+                        ChallengeController.sharedInstance.setSentChallengesForUser({
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        })
+                    })
                 })
-                self.dismissViewControllerAnimated(true, completion: nil)
             }
         })
     }

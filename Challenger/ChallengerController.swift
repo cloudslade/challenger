@@ -107,6 +107,8 @@ class ChallengeController {
         })
     }
     
+    // We need to guarantee there will be a user in her before we can run these functions
+    
 }
 
 

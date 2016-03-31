@@ -10,11 +10,4 @@ import UIKit
 
 class SearchUserViewController: UIViewController {
     
-    override func viewDidLoad() {
-        ChallengeController.sharedInstance.setReceivedChallengesForUser { 
-            ChallengeController.sharedInstance.setSentChallengesForUser({
-                print("loaded received and sent challanges for current user")
-            })
-        }
-    }
 }
