@@ -38,6 +38,10 @@ class Challenge {
     
 }
 
+func == (lhs: Challenge, rhs: Challenge) -> Bool {
+    return lhs.uniqueID == rhs.uniqueID
+}
+
 enum ChallengeStatus: Int {
     case pending
     case declined, accepted

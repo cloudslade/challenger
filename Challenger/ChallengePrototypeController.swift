@@ -19,14 +19,16 @@ class ChallengePrototypeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.updateWithChallenge(challenge)
+        self.updateWithChallenge(challenge)
     }
     
-//    func updateWithChallenge(challenge: Challenge?) {
-//        if let challenge = challenge {
-//            self.challengerTextLabel.text = challenge.text
-//            self.timerLabel.text = String(challenge.totalSeconds)
-//        }
-//    }
+    func updateWithChallenge(challenge: Challenge?) {
+        if let challenge = challenge {
+            self.challengerTextLabel.text = challenge.text
+            self.timerLabel.text = String(challenge.totalSeconds)
+            self.declineButton.backgroundColor = UIColor.redColor()
+            self.goButton.backgroundColor = UIColor.greenColor()
+        }
+    }
     
 }
