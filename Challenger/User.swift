@@ -31,13 +31,7 @@ class User {
     
     // Consider placing the actual objects on the user and
     var pendingChallenges: [Challenge] {
-        //let pending = 
         return ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.filter({$0.status.rawValue == 0})
-//        var pendingIDs: [String] = []
-//        for challenge in pending {
-//            pendingIDs.append(challenge.uniqueID)
-//        }
-//        return pendingIDs
     }
     var declinedChallenges: [String] {
         let declinedChallenges = ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser.filter({$0.status.rawValue == 1})

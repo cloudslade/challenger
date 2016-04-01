@@ -43,3 +43,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // Completions are used oftimes because the program is just running and if you have something that takes time to execute the program will just skip it until it is called while it continues executing.
 
 // We may want our most recent challanges to shot up first. When a challange is created bed sure that it is prepended to the receivers array of pending challenges.
+// Consider giving users an initial challange to follow a friend and send a challenge in x amount of time.
+// we will need a way to initialize a users following and followers form firebase. It won't be hard.
