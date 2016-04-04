@@ -16,8 +16,8 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func logoutButtonTapped(sender: UIButton) {
-        // clear all data source in the app
-        // segue to the login screen
+        performSegueWithIdentifier("toLogin", sender: nil)
+        UserController.sharedInstance.currentUser = nil
     }
     
 }

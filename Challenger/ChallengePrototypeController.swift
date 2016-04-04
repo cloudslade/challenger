@@ -26,8 +26,10 @@ class ChallengePrototypeViewController: UIViewController {
         if let challenge = challenge {
             self.challengerTextLabel.text = challenge.text
             self.timerLabel.text = String(challenge.totalSeconds)
-            self.declineButton.backgroundColor = UIColor.redColor()
-            self.goButton.backgroundColor = UIColor.greenColor()
+            self.declineButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            self.declineButton.backgroundColor = UIColor(colorLiteralRed:0.750, green:0.310, blue:0.345, alpha:1.00)
+            self.goButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            self.goButton.backgroundColor = UIColor(colorLiteralRed: 0.114, green: 0.725, blue: 0.329, alpha: 1.00)
         }
     }
     

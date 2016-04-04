@@ -36,11 +36,41 @@ class UserController {
         UserController.sharedInstance.currentUser = user
     }
     
-    static func getUserForUID(uid: String, completion: (user: User) -> Void) {
-        Firebasecontroller.userBase.childByAppendingPath(uid).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if let userDictionary = snapshot.value as? [String: AnyObject] {
-                let user = User(json: userDictionary, uniqueID: uid)
+    static func getUserForUID(uid: String, completion: (user: User?) -> Void) {
+        Firebasecontroller.dataAtEndpoint("users/\(uid)", completion: { (data) in
+            if let data = data {
+                let user = User(userJSON: data, uniqueID: uid)
                 completion(user: user)
+            } else {
+                completion(user: nil)
+            }
+        })
+    }
+    
+    static func getFollowingForUser(userID: String, completion: (following: [String]) -> Void) {
+        Firebasecontroller.dataAtEndpoint("following/\(userID)", completion: { (data) in
+            if let data = data {
+                var following: [String] = []
+                for (userID, _) in data {
+                    following.append(userID)
+                }
+                completion(following: following)
+            } else {
+                completion(following: [])
+            }
+        })
+    }
+    
+    static func getFollowersForUser(userID: String, completion: (followers: [String]) -> Void) {
+        Firebasecontroller.dataAtEndpoint("followers/\(userID)", completion: { (data) in
+            if let data = data {
+                var followers: [String] = []
+                for (userID, _) in data {
+                    followers.append(userID)
+                }
+                completion(followers: followers)
+            } else {
+                completion(followers: [])
             }
         })
     }
@@ -51,8 +81,10 @@ class UserController {
             currentUser.following.append(userID)
             Firebasecontroller.followingBase.childByAppendingPath(currentUser.uniqueID).updateChildValues([userID: true])
             UserController.getUserForUID(userID) { (user) in
-                user.followers.append(currentUser.uniqueID) // this is superfluous as you won't need this initialized object
-                Firebasecontroller.followersBase.childByAppendingPath(user.uniqueID).updateChildValues([currentUser.uniqueID: true])
+                if let user = user {
+                    user.followers.append(currentUser.uniqueID) // this is superfluous as you won't need this initialized object
+                    Firebasecontroller.followersBase.childByAppendingPath(user.uniqueID).updateChildValues([currentUser.uniqueID: true])
+                }
             }
         }
     }
@@ -63,12 +95,10 @@ class UserController {
             if let followingIndex = currentUser.following.indexOf(userID) {
                 currentUser.following.removeAtIndex(followingIndex)
                 Firebasecontroller.followingBase.childByAppendingPath(currentUser.uniqueID).childByAppendingPath(userID).removeValue()
+                Firebasecontroller.followersBase.childByAppendingPath(userID).childByAppendingPath(currentUser.uniqueID).removeValue()
             } else {
                 print("unfollowUser could not find the index of the user in currentUser following array")
             }
-            UserController.getUserForUID(userID, completion: { (user) in
-                Firebasecontroller.followersBase.childByAppendingPath(user.uniqueID).childByAppendingPath(currentUser.uniqueID).removeValue()
-            })
         }
     }
     
@@ -77,11 +107,11 @@ class UserController {
         let endpoint = "users"
         var arrayOfAllUsers: [User] = []
         Firebasecontroller.dataAtEndpoint(endpoint) { (data) in
-            for (userID, userDic) in data {
-                let user = User(json: userDic as! [String : AnyObject], uniqueID: userID)
+            for (userID, userDic) in data! {
+                let user = User(userJSON: userDic as! [String : AnyObject], uniqueID: userID)
                 arrayOfAllUsers.append(user)
-                completion(allUsers: arrayOfAllUsers)
             }
+            completion(allUsers: arrayOfAllUsers)
         }
     }
     
@@ -94,4 +124,4 @@ class UserController {
 
 
 
-
+// We need to make our user Initializer also initialize with the users followers and following.

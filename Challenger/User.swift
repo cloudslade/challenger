@@ -74,19 +74,20 @@ class User {
         }
     }
     
-    init(json: [String: AnyObject], uniqueID: String) {
+    init(userJSON: [String: AnyObject], uniqueID: String) {
         self.uniqueID = uniqueID
-        self.username = json["username"] as! String
-        if let sentChallengesDic = json["sentChallenges"] as? [String: Int] {
+        self.username = userJSON["username"] as! String
+        if let sentChallengesDic = userJSON["sentChallenges"] as? [String: Int] {
             for (challenge, _) in sentChallengesDic {
                 sentChallenges.append(challenge)
             }
         }
-        if let receivedChallengesDic = json["receivedChallenges"] as? [String: Int] {
+        if let receivedChallengesDic = userJSON["receivedChallenges"] as? [String: Int] {
             for element in receivedChallengesDic {
                 receivedChallenges.append(element.0)
             }
         }
+        
     }
     
 }

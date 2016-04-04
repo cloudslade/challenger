@@ -34,7 +34,6 @@ class ChallengePageViewController: UIPageViewController {
         if let _ = UserController.sharedInstance.currentUser {
             if let firstVC = ChallengePageViewController.viewControllerDataSource?.first {
                 self.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
-                print("user has challenges")
             } else {
                 print("user has no challenges")
             }

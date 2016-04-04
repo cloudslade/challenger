@@ -31,6 +31,7 @@
 		E61A33CF1CA3451D004E5505 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33CE1CA3451D004E5505 /* CreateAccountViewController.swift */; };
 		E61A33D11CA34530004E5505 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33D01CA34530004E5505 /* UserTableViewCell.swift */; };
 		E675DE291CAC5265009BA54E /* ChallengerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675DE281CAC5265009BA54E /* ChallengerTabBarViewController.swift */; };
+		E6C2FA541CB30619006D2054 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C2FA531CB30619006D2054 /* TimerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +74,7 @@
 		E61A33CE1CA3451D004E5505 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		E61A33D01CA34530004E5505 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		E675DE281CAC5265009BA54E /* ChallengerTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengerTabBarViewController.swift; sourceTree = "<group>"; };
+		E6C2FA531CB30619006D2054 /* TimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				E61A33BC1CA3132B004E5505 /* ChallengerController.swift */,
 				E61A33C11CA3135C004E5505 /* FirebaseController.swift */,
 				E61A33BE1CA31332004E5505 /* UserController.swift */,
+				E6C2FA531CB30619006D2054 /* TimerController.swift */,
 			);
 			name = ModelControllers;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			files = (
 				E61A33CF1CA3451D004E5505 /* CreateAccountViewController.swift in Sources */,
 				E61A33C21CA3135C004E5505 /* FirebaseController.swift in Sources */,
+				E6C2FA541CB30619006D2054 /* TimerController.swift in Sources */,
 				E61A33B81CA31315004E5505 /* User.swift in Sources */,
 				E61A33CB1CA3450E004E5505 /* ProfileViewcontroller.swift in Sources */,
 				E61A33D11CA34530004E5505 /* UserTableViewCell.swift in Sources */,

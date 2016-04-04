@@ -56,12 +56,20 @@ class LoginVewController: UIViewController {
             } else {
                 let uniqueUserID = fAuthData.uid
                 UserController.getUserForUID(uniqueUserID, completion: { (user) in
-                    UserController.sharedInstance.setCurrentUser(user)
-                    ChallengeController.sharedInstance.setReceivedChallengesForUser ({
-                        ChallengeController.sharedInstance.setSentChallengesForUser({
-                            self.dismissViewControllerAnimated(true, completion: nil)
+                    if let user = user {
+                        UserController.sharedInstance.setCurrentUser(user)
+                        ChallengeController.sharedInstance.setReceivedChallengesForUser ({
+                            ChallengeController.sharedInstance.setSentChallengesForUser({
+                                UserController.getFollowingForUser(uniqueUserID, completion: { (following) in
+                                    UserController.getFollowersForUser(uniqueUserID, completion: { (followers) in
+                                        UserController.sharedInstance.currentUser?.following = following
+                                        UserController.sharedInstance.currentUser?.followers = followers
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                    })
+                                })
+                            })
                         })
-                    })
+                    }
                 })
             }
         })

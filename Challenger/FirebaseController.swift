@@ -28,23 +28,25 @@ class Firebasecontroller {
             }
         }
     }
-
+    
     static func saveUser(user: User) {
         let uniqueUserRef = userBase.childByAppendingPath(user.uniqueID)
         let userDic: [String: AnyObject] = [
             "username": user.username,
-//            "profilePic": user.profilePic,
+            //            "profilePic": user.profilePic,
             ChallengeController.kReceivedChallenges : true,
             ChallengeController.kSentChallenges : true
         ]
         uniqueUserRef.setValue(userDic)
     }
     
-    static func dataAtEndpoint(endpoint: String, completion: (data: [String: AnyObject]) -> Void) {
+    static func dataAtEndpoint(endpoint: String, completion: (data: [String: AnyObject]?) -> Void) {
         Firebasecontroller.base.childByAppendingPath(endpoint).observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
-            
-            let data = snapshot.value as! [String: AnyObject]
-            completion(data: data)
+            if let data = snapshot.value as? [String: AnyObject] {
+                completion(data: data)
+            } else {
+                completion(data: nil)
+            }
         })
     }
     

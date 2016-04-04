@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="81" id="735-wX-t6b">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="81" id="735-wX-t6b" customClass="UserTableViewCell" customModule="Challenger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="735-wX-t6b" id="AQY-jZ-eHC">
@@ -55,6 +55,9 @@
                                                         <constraint firstAttribute="width" constant="94" id="9cU-2M-136"/>
                                                     </constraints>
                                                     <state key="normal" title="Follow"/>
+                                                    <connections>
+                                                        <action selector="followButtonTapped:" destination="735-wX-t6b" eventType="touchUpInside" id="k64-Fg-v8D"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -67,8 +70,17 @@
                                                 <constraint firstItem="bSh-Dj-cGx" firstAttribute="top" secondItem="AQY-jZ-eHC" secondAttribute="topMargin" id="rxb-69-RIO"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followButton" destination="fVd-km-PmJ" id="a3u-v4-SqO"/>
+                                            <outlet property="profilePicImageView" destination="bSh-Dj-cGx" id="dvv-3I-idl"/>
+                                            <outlet property="usernameLabel" destination="wrc-io-oTI" id="8jj-Be-sps"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jYm-l7-sw1" id="ji9-FV-3yh"/>
+                                    <outlet property="delegate" destination="jYm-l7-sw1" id="Rzm-6S-wz7"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,6 +96,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="pJO-3b-BpG" userLabel="search"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="IlM-mS-PnZ" id="ih7-y2-wdC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yho-c6-jmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,10 +114,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="jYm-l7-sw1" kind="relationship" relationship="viewControllers" id="aiB-CD-sB3"/>
-                        <segue destination="JWp-VH-7Cb" kind="relationship" relationship="viewControllers" id="wTo-uo-v27"/>
-                        <segue destination="PAB-ws-dWG" kind="relationship" relationship="viewControllers" id="fvB-VH-xSW"/>
                         <segue destination="iox-ik-ekL" kind="presentation" identifier="toLoginVC" id="q7V-cN-ofG"/>
+                        <segue destination="PAB-ws-dWG" kind="relationship" relationship="viewControllers" id="fvB-VH-xSW"/>
+                        <segue destination="JWp-VH-7Cb" kind="relationship" relationship="viewControllers" id="wTo-uo-v27"/>
+                        <segue destination="jYm-l7-sw1" kind="relationship" relationship="viewControllers" id="aiB-CD-sB3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrX-bN-Vcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -281,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCw-dy-bZo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="1056"/>
+            <point key="canvasLocation" x="1690" y="1056"/>
         </scene>
         <!--Profile-->
         <scene sceneID="XiO-YN-2aC">
@@ -590,6 +605,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="q7V-cN-ofG"/>
+        <segue reference="tkc-o2-xFP"/>
     </inferredMetricsTieBreakers>
 </document>

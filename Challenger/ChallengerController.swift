@@ -21,7 +21,7 @@ class ChallengeController {
     var allReceivedChallengesForCurrentUser: [Challenge] = []
     var allSentChallengesForUser: [Challenge] = []
     
-    static func createSentChallengesForCurrentUser(completion: (challenges: [Challenge]) -> Void) {
+    static func initializeSentChallengesForCurrentUser(completion: (challenges: [Challenge]) -> Void) {
         var challenges: [Challenge] = []
         if let sentChallengeIDs = UserController.sharedInstance.currentUser?.sentChallenges {
             let group = dispatch_group_create()
@@ -29,12 +29,16 @@ class ChallengeController {
                 dispatch_group_enter(group)
                 let endpoint = "challenges/" + "\(challengeID)"
                 Firebasecontroller.dataAtEndpoint(endpoint, completion: { (data) in
-                    let challange = Challenge(uniqueID: challengeID, json: data)
-                    challenges.append(challange)
-                    dispatch_group_leave(group)
+                    if let data = data {
+                        let challange = Challenge(uniqueID: challengeID, json: data)
+                        challenges.append(challange)
+                        dispatch_group_leave(group)
+                    } else {
+                        dispatch_group_leave(group)
+                    }
                 })
             }
-            dispatch_group_notify(group, dispatch_get_main_queue(), { 
+            dispatch_group_notify(group, dispatch_get_main_queue(), {
                 completion(challenges: challenges)
             })
         } else {
@@ -42,7 +46,7 @@ class ChallengeController {
         }
     }
     
-    static func createReceivedChallengesForCurrentUser(completion: (challenges: [Challenge]) -> Void) {
+    static func initializeReceivedChallengesForCurrentUser(completion: (challenges: [Challenge]) -> Void) {
         var challenges: [Challenge] = []
         if let receivedChallengeIDs = UserController.sharedInstance.currentUser?.receivedChallenges {
             let group = dispatch_group_create()
@@ -50,12 +54,16 @@ class ChallengeController {
                 dispatch_group_enter(group)
                 let endpoint = "challenges/" + "\(challengeID)"
                 Firebasecontroller.dataAtEndpoint(endpoint, completion: { (data) in
-                    let challange = Challenge(uniqueID: challengeID, json: data)
-                    challenges.append(challange)
-                    dispatch_group_leave(group)
+                    if let data = data {
+                        let challange = Challenge(uniqueID: challengeID, json: data)
+                        challenges.append(challange)
+                        dispatch_group_leave(group)
+                    } else {
+                        dispatch_group_leave(group)
+                    }
                 })
             }
-            dispatch_group_notify(group, dispatch_get_main_queue(), { 
+            dispatch_group_notify(group, dispatch_get_main_queue(), {
                 completion(challenges: challenges)
             })
         } else {
@@ -90,8 +98,8 @@ class ChallengeController {
     }
     
     func setSentChallengesForUser(completion: () -> Void) {
-        ChallengeController.createSentChallengesForCurrentUser({ (challenges: [Challenge]) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { 
+        ChallengeController.initializeSentChallengesForCurrentUser({ (challenges: [Challenge]) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
                 ChallengeController.sharedInstance.allSentChallengesForUser = challenges
                 completion()
             })
@@ -99,15 +107,13 @@ class ChallengeController {
     }
     
     func setReceivedChallengesForUser(completion: () -> Void) {
-         ChallengeController.createReceivedChallengesForCurrentUser({ (challenges) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { 
+        ChallengeController.initializeReceivedChallengesForCurrentUser({ (challenges) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
                 ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser = challenges
                 completion()
             })
         })
     }
-    
-    // We need to guarantee there will be a user in her before we can run these functions
     
 }
 

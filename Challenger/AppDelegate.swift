@@ -45,3 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // We may want our most recent challanges to shot up first. When a challange is created bed sure that it is prepended to the receivers array of pending challenges.
 // Consider giving users an initial challange to follow a friend and send a challenge in x amount of time.
 // we will need a way to initialize a users following and followers form firebase. It won't be hard.
+
+// When a user clicks accept the pageViewController needs to lock it's scroll capabilities until the timer is complete.
+// When a user clicks decline the challenge needs to change it's status to 'decilned'
+    // We also need to make hte adjustment in firebase.
+    // We also need to reload the pageViewController
