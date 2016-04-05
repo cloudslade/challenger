@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ChallengePageViewController: UIPageViewController {
+class ChallengePageViewController: UIPageViewController, ChallengePrototypeViewControllerParent {
     
-    static var viewControllerDataSource: [ChallengePrototypeViewController]? {
+    var viewControllerDataSource: [ChallengePrototypeViewController]? {
         var pendingChallengeVCs: [ChallengePrototypeViewController] = []
         if let pendingChallenges = UserController.sharedInstance.currentUser?.pendingChallenges {
             for challenge in pendingChallenges {
@@ -32,7 +32,7 @@ class ChallengePageViewController: UIPageViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if let _ = UserController.sharedInstance.currentUser {
-            if let firstVC = ChallengePageViewController.viewControllerDataSource?.first {
+            if let firstVC = viewControllerDataSource?.first {
                 self.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             } else {
                 print("user has no challenges")
@@ -44,9 +44,10 @@ class ChallengePageViewController: UIPageViewController {
 
 extension ChallengePageViewController: UIPageViewControllerDataSource {
     
-    // Required Datasource functions
+    // MARK: - Required Datasource functions
+    
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerDataSource = ChallengePageViewController.viewControllerDataSource else {
+        guard let viewControllerDataSource = viewControllerDataSource else {
             return nil
         }
         guard let viewController = viewController as? ChallengePrototypeViewController else {
@@ -66,7 +67,7 @@ extension ChallengePageViewController: UIPageViewControllerDataSource {
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerDataSource = ChallengePageViewController.viewControllerDataSource else {
+        guard let viewControllerDataSource = viewControllerDataSource else {
             return nil
         }
         guard let viewController = viewController as? ChallengePrototypeViewController else {
@@ -79,10 +80,11 @@ extension ChallengePageViewController: UIPageViewControllerDataSource {
         guard nextIndex < viewControllerDataSource.count else {
             return nil
         }
-        return viewControllerDataSource[nextIndex] //with correct index, the index of the viewcontroller after this one. Let's do all the necessary checsk and give it that index.
+        return viewControllerDataSource[nextIndex] // with correct index, the index of the viewcontroller after this one. Let's do all the necessary checsk and give it that index.
     }
     
-    // Optional Datasource functions
+    // MARK: - Optional Datasource functions
+    
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 3
     }// The number of items reflected in the page indicator.
@@ -92,9 +94,25 @@ extension ChallengePageViewController: UIPageViewControllerDataSource {
     }// The selected item reflected in the page indicator.
     
     
+    // MARK: - Challenge ViewController Delegate
+    
+    func declineButtonTapped() {
+        // update the pageViewController
+        if let _ = UserController.sharedInstance.currentUser {
+            if let firstVC = viewControllerDataSource?.first {
+                self.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+            } else {
+                print("user has no challenges")
+            }
+        }
+    }
+    
+    func goButtonTapped() {
+        print("tapped")
+    }
+
     
 }
-
 
 
 

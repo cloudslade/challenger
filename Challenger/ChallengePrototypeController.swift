@@ -22,6 +22,25 @@ class ChallengePrototypeViewController: UIViewController {
         self.updateWithChallenge(challenge)
     }
     
+    @IBAction func goButtonTapped(sender: UIButton) {
+        // start timer. Lock views
+        guard let pageViewController = self.parentViewController as? ChallengePageViewController else {return}
+        pageViewController.goButtonTapped()
+    }
+    
+    @IBAction func declineButtonTapped(sender: UIButton) {
+        guard let pageViewController = self.parentViewController as? ChallengePageViewController else {return}
+        for challenge in ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser {
+            if challenge == self.challenge! {
+                challenge.status = ChallengeStatus.declined
+                Firebasecontroller.challangeBase.childByAppendingPath(challenge.uniqueID).childByAppendingPath("status").setValue(1)
+                Firebasecontroller.userBase.childByAppendingPath(challenge.senderID).childByAppendingPath("sentChallenges").childByAppendingPath(challenge.uniqueID).setValue(1)
+                Firebasecontroller.userBase.childByAppendingPath(challenge.receiverID).childByAppendingPath("receivedChallenges").childByAppendingPath(challenge.uniqueID).setValue(1)
+            }
+        }
+        pageViewController.declineButtonTapped()
+    }
+    
     func updateWithChallenge(challenge: Challenge?) {
         if let challenge = challenge {
             self.challengerTextLabel.text = challenge.text
@@ -33,4 +52,9 @@ class ChallengePrototypeViewController: UIViewController {
         }
     }
     
+}
+
+protocol ChallengePrototypeViewControllerParent {
+    func declineButtonTapped()
+    func goButtonTapped()
 }

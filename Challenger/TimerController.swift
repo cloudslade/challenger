@@ -17,6 +17,7 @@ class TimerController {
     
     private(set) var seconds = NSTimeInterval(0)
     private(set) var totalSeconds = NSTimeInterval(0)
+    var challenge: Challenge?
     private var timer: NSTimer?
     var isOn: Bool {
         get {
@@ -27,33 +28,28 @@ class TimerController {
             }
         }
     }
-    var string: String {
+    var timeString: String {
         get {
             let totalSeconds = Int(self.seconds)
-            
             let hours = totalSeconds / 3600
             let minutes = (totalSeconds - (hours * 3600)) / 60
             let seconds = totalSeconds - (hours * 3600) - (minutes * 60)
-            
             var hoursString = ""
             if hours > 0 {
                 hoursString = "\(hours):"
             }
-            
             var minutesString = ""
             if minutes < 10 {
                 minutesString = "0\(minutes):"
             } else {
                 minutesString = "\(minutes):"
             }
-            
             var secondsString = ""
             if seconds < 10 {
                 secondsString = "0\(seconds)"
             } else {
                 secondsString = "\(seconds)"
             }
-            
             return hoursString + minutesString + secondsString
         }
     }
