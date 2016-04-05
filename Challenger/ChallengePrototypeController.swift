@@ -15,17 +15,25 @@ class ChallengePrototypeViewController: UIViewController {
     @IBOutlet var declineButton: UIButton!
     @IBOutlet var goButton: UIButton!
     
+    var timer = Timer()
+    
     var challenge: Challenge?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWithChallenge(challenge)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateOnSecond), name: Timer.notificationSecondTick, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(timerFinished), name: Timer.notificationComplete, object: nil)
     }
     
     @IBAction func goButtonTapped(sender: UIButton) {
         // start timer. Lock views
-        guard let pageViewController = self.parentViewController as? ChallengePageViewController else {return}
-        pageViewController.goButtonTapped()
+        if let challenge = self.challenge {
+            guard let pageViewController = self.parentViewController as? ChallengePageViewController else {return}
+            timer.setTimer(challenge.totalSeconds, totalSeconds: challenge.totalSeconds)
+            timer.startTimer()
+            pageViewController.goButtonTapped()
+        }
     }
     
     @IBAction func declineButtonTapped(sender: UIButton) {
@@ -39,6 +47,19 @@ class ChallengePrototypeViewController: UIViewController {
             }
         }
         pageViewController.declineButtonTapped()
+    }
+    
+    @objc func updateOnSecond() {
+        updateTimerLabel(timer.timeString)
+    }
+    
+    func updateTimerLabel(time: String) {
+        timerLabel.text = time
+    }
+    
+    @objc func timerFinished() {
+        guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
+        pageViewController.enableScrolling()
     }
     
     func updateWithChallenge(challenge: Challenge?) {

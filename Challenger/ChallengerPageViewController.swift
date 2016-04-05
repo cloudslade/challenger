@@ -40,6 +40,26 @@ class ChallengePageViewController: UIPageViewController, ChallengePrototypeViewC
         }
     }
     
+    func disableScrolling() {
+//        for view in self.view.subviews {
+//            if view.isKindOfClass(UIScrollView) {
+//                if let view = view as? UIScrollView {
+//                    view.scrollEnabled = false
+//                }
+//            }
+//        }
+    }
+    
+    func enableScrolling() {
+//        for view in self.view.subviews {
+//            if view.isKindOfClass(UIScrollView) {
+//                if let view = view as? UIScrollView {
+//                    view.scrollEnabled = true
+//                }
+//            }
+//        }
+    }
+    
 }
 
 extension ChallengePageViewController: UIPageViewControllerDataSource {
@@ -108,7 +128,7 @@ extension ChallengePageViewController: UIPageViewControllerDataSource {
     }
     
     func goButtonTapped() {
-        print("tapped")
+        disableScrolling()
     }
 
     

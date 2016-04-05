@@ -115,6 +115,11 @@ class ChallengeController {
         })
     }
     
+//    func updateChallengeStatus(newStatus: ChallengeStatus) {
+//          update to firebase in respective locaitons
+//          update to local
+//    }
+
 }
 
 

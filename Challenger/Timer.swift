@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TimerController {
+class Timer {
     // What will this class dp?
     // What we will do is manage the timer.
     // We will call functions in this class from actions like challengeAcceptedButtonTapped() and when the timer reaches 00:00:00
@@ -61,7 +61,7 @@ class TimerController {
     
     func startTimer() {
         if !isOn {
-            timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1.0), target: self, selector: "secondTick", userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(1.0), target: self, selector: #selector(secondTick), userInfo: nil, repeats: true)
         }
     }
     
@@ -72,13 +72,17 @@ class TimerController {
         }
     }
     
-    func secondTick() {
+    @objc func secondTick() {
         seconds -= 1
-        NSNotificationCenter.defaultCenter().postNotificationName(TimerController.notificationSecondTick, object: self)
+        NSNotificationCenter.defaultCenter().postNotificationName(Timer.notificationSecondTick, object: self)
         if seconds <= 0 {
             stopTimer()
-            NSNotificationCenter.defaultCenter().postNotificationName(TimerController.notificationComplete, object: self)
+            NSNotificationCenter.defaultCenter().postNotificationName(Timer.notificationComplete, object: self)
         }
     }
     
 }
+
+// What functions will be observing notificationSEcondTick? - UpdateTimerLabel. Update Animation.
+
+
