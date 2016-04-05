@@ -71,7 +71,7 @@ class ChallengeController {
         }
     }
     
-    static func createChallenge(text: String, totalSeconds: NSTimeInterval, senderID: String, receiverID: String, status: ChallengeStatus) {
+    func createChallenge(text: String, totalSeconds: NSTimeInterval, senderID: String, receiverID: String, status: ChallengeStatus) {
         let firebaseDic: [String: AnyObject] = [
             ChallengeController.sharedInstance.kText : text,
             ChallengeController.sharedInstance.kTotalSeconds : totalSeconds,
@@ -115,11 +115,17 @@ class ChallengeController {
         })
     }
     
-//    func updateChallengeStatus(newStatus: ChallengeStatus) {
-//          update to firebase in respective locaitons
-//          update to local
-//    }
-
+    func updateReceivedChallengeStatus(challenge: Challenge, newStatus: ChallengeStatus) {
+        for element in ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser {
+            if element == challenge {
+                element.status = newStatus
+            }
+        }
+        Firebasecontroller.challangeBase.childByAppendingPath(challenge.uniqueID).childByAppendingPath("status").setValue(newStatus.rawValue)
+        Firebasecontroller.userBase.childByAppendingPath(challenge.senderID).childByAppendingPath("sentChallenges").childByAppendingPath(challenge.uniqueID).setValue(newStatus.rawValue)
+        Firebasecontroller.userBase.childByAppendingPath(challenge.receiverID).childByAppendingPath("receivedChallenges").childByAppendingPath(challenge.uniqueID).setValue(newStatus.rawValue)
+    }
+    
 }
 
 

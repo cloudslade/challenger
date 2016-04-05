@@ -11,7 +11,7 @@ import Foundation
 class Challenge {
     let uniqueID: String
     var text: String
-    var timer: NSTimer?
+    var timer = Timer()
     var totalSeconds: NSTimeInterval
     let senderID: String
     let receiverID: String

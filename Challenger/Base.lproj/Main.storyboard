@@ -94,7 +94,7 @@
                             <constraint firstItem="IlM-mS-PnZ" firstAttribute="bottom" secondItem="kdm-hY-ctE" secondAttribute="top" id="scB-M5-Ye5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="pJO-3b-BpG" userLabel="search"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="Icon-Small" id="pJO-3b-BpG" userLabel="search"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="IlM-mS-PnZ" id="ih7-y2-wdC"/>
@@ -116,7 +116,7 @@
                     <connections>
                         <segue destination="iox-ik-ekL" kind="presentation" identifier="toLoginVC" id="q7V-cN-ofG"/>
                         <segue destination="PAB-ws-dWG" kind="relationship" relationship="viewControllers" id="fvB-VH-xSW"/>
-                        <segue destination="JWp-VH-7Cb" kind="relationship" relationship="viewControllers" id="wTo-uo-v27"/>
+                        <segue destination="7kX-7T-ONb" kind="relationship" relationship="viewControllers" id="wTo-uo-v27"/>
                         <segue destination="jYm-l7-sw1" kind="relationship" relationship="viewControllers" id="aiB-CD-sB3"/>
                     </connections>
                 </tabBarController>
@@ -124,16 +124,116 @@
             </objects>
             <point key="canvasLocation" x="710" y="285"/>
         </scene>
-        <!--Title-->
+        <!--Create Challenge View Controller-->
+        <scene sceneID="JlK-Ub-XZ1">
+            <objects>
+                <viewController id="llw-3s-OhW" customClass="CreateChallengeViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CZy-v3-blF"/>
+                        <viewControllerLayoutGuide type="bottom" id="rlJ-EK-pgD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T3M-Zb-Irv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r0-j3-cy2">
+                                <rect key="frame" x="20" y="195" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRv-Yk-GBf">
+                                <rect key="frame" x="20" y="351" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-rI-zb3">
+                                <rect key="frame" x="20" y="380" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIw-P4-R6Q">
+                                <rect key="frame" x="20" y="100" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLn-Zu-i4B">
+                                <rect key="frame" x="387" y="470" width="193" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="193" id="FmU-5V-PqW"/>
+                                    <constraint firstAttribute="height" constant="57" id="QFs-sc-sgz"/>
+                                </constraints>
+                                <state key="normal" title="Send Challenge"/>
+                                <connections>
+                                    <action selector="sendChallengeButtonTapped:" destination="llw-3s-OhW" eventType="touchUpInside" id="2UZ-3Z-iQs"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DKU-vA-SrG">
+                                <rect key="frame" x="20" y="224" width="552" height="91"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-3F-8cD">
+                                <rect key="frame" x="20" y="129" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DKU-vA-SrG" firstAttribute="top" secondItem="6r0-j3-cy2" secondAttribute="bottom" constant="8" symbolic="YES" id="4M5-AW-XTf"/>
+                            <constraint firstItem="Q2D-rI-zb3" firstAttribute="trailing" secondItem="qLn-Zu-i4B" secondAttribute="trailing" id="6y6-tV-rSg"/>
+                            <constraint firstItem="jRv-Yk-GBf" firstAttribute="leading" secondItem="6r0-j3-cy2" secondAttribute="leading" id="G65-Jt-HUn"/>
+                            <constraint firstItem="jRv-Yk-GBf" firstAttribute="top" secondItem="DKU-vA-SrG" secondAttribute="bottom" constant="36" id="HUB-7b-WgR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qLn-Zu-i4B" secondAttribute="trailing" id="J8O-Zl-efR"/>
+                            <constraint firstItem="rCk-3F-8cD" firstAttribute="top" secondItem="uIw-P4-R6Q" secondAttribute="bottom" constant="8" symbolic="YES" id="WH1-mz-TlE"/>
+                            <constraint firstItem="rCk-3F-8cD" firstAttribute="trailing" secondItem="T3M-Zb-Irv" secondAttribute="trailingMargin" id="ZeS-K9-hhc"/>
+                            <constraint firstItem="rCk-3F-8cD" firstAttribute="leading" secondItem="6r0-j3-cy2" secondAttribute="leading" id="bZk-YR-kLJ"/>
+                            <constraint firstItem="qLn-Zu-i4B" firstAttribute="top" secondItem="Q2D-rI-zb3" secondAttribute="bottom" constant="60" id="ehS-w9-i8X"/>
+                            <constraint firstItem="uIw-P4-R6Q" firstAttribute="leading" secondItem="T3M-Zb-Irv" secondAttribute="leadingMargin" id="gVe-Is-68T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DKU-vA-SrG" secondAttribute="trailing" constant="8" id="odV-MH-byz"/>
+                            <constraint firstItem="jRv-Yk-GBf" firstAttribute="leading" secondItem="Q2D-rI-zb3" secondAttribute="leading" id="oh4-ua-fXa"/>
+                            <constraint firstItem="Q2D-rI-zb3" firstAttribute="top" secondItem="jRv-Yk-GBf" secondAttribute="bottom" constant="8" symbolic="YES" id="pbp-MH-hGO"/>
+                            <constraint firstItem="rlJ-EK-pgD" firstAttribute="top" secondItem="qLn-Zu-i4B" secondAttribute="bottom" constant="24" id="qTs-4Q-GOn"/>
+                            <constraint firstItem="jRv-Yk-GBf" firstAttribute="leading" secondItem="DKU-vA-SrG" secondAttribute="leading" id="rUP-Ho-PiJ"/>
+                            <constraint firstItem="uIw-P4-R6Q" firstAttribute="top" secondItem="CZy-v3-blF" secondAttribute="bottom" constant="36" id="uw5-wX-nH3"/>
+                            <constraint firstItem="uIw-P4-R6Q" firstAttribute="leading" secondItem="rCk-3F-8cD" secondAttribute="leading" id="wFf-EO-k7a"/>
+                            <constraint firstItem="6r0-j3-cy2" firstAttribute="top" secondItem="rCk-3F-8cD" secondAttribute="bottom" constant="36" id="xMJ-Uw-CjD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="challengeTextView" destination="DKU-vA-SrG" id="reP-0U-a9u"/>
+                        <outlet property="timePicker" destination="ugO-t2-3xd" id="bME-tX-0np"/>
+                        <outlet property="timeTextField" destination="Q2D-rI-zb3" id="7e6-NZ-obg"/>
+                        <outlet property="userNameTextField" destination="rCk-3F-8cD" id="w3L-up-jkB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ngu-al-1Tn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="ugO-t2-3xd">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </pickerView>
+            </objects>
+            <point key="canvasLocation" x="2324" y="-412"/>
+        </scene>
+        <!--Challenge Page View Controller-->
         <scene sceneID="TKS-R0-J5U">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="JWp-VH-7Cb" customClass="ChallengePageViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Challenges" id="BGj-Cr-JmN" userLabel="PVC"/>
-                    <navigationItem key="navigationItem" title="Title" id="vuB-wy-Szy"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="JWp-VH-7Cb" customClass="ChallengePageViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="IUu-ZS-z1q">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ci5-sB-ldW">
+                            <connections>
+                                <segue destination="llw-3s-OhW" kind="show" id="5gC-j9-4BC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DH7-JN-YPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1504" y="277"/>
+            <point key="canvasLocation" x="2316" y="285"/>
         </scene>
         <!--Login Vew Controller-->
         <scene sceneID="p1u-XI-gn7">
@@ -447,7 +547,7 @@
                             <constraint firstItem="T8O-tX-Ydb" firstAttribute="trailing" secondItem="phY-er-SNj" secondAttribute="trailing" id="y2s-Eo-LKZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="2va-iu-Fzi"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Icon-Small" id="2va-iu-Fzi"/>
                     <connections>
                         <outlet property="pendingChallengesLabel" destination="ETT-hz-EoH" id="FYQ-v4-Wub"/>
                     </connections>
@@ -493,7 +593,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61f-2E-JkK">
                                                 <rect key="frame" x="8" y="8" width="584" height="129"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -509,9 +609,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imJ-f9-HJw">
                                         <rect key="frame" x="0.0" y="290" width="600" height="145"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCb-wJ-ydm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCb-wJ-ydm">
                                                 <rect key="frame" x="8" y="8" width="584" height="129"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -609,7 +709,30 @@
             </objects>
             <point key="canvasLocation" x="157" y="1056"/>
         </scene>
+        <!--Challenges-->
+        <scene sceneID="6hd-wV-VcP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7kX-7T-ONb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Challenges" image="noun_416266_cc" id="BGj-Cr-JmN" userLabel="PVC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ca-tG-7ot">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JWp-VH-7Cb" kind="relationship" relationship="rootViewController" id="rar-Ao-UsV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCs-o2-S8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1504" y="285"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Icon-Small" width="29" height="29"/>
+        <image name="noun_416266_cc" width="36" height="36"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tkc-o2-xFP"/>
     </inferredMetricsTieBreakers>

@@ -50,3 +50,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // When a user clicks decline the challenge needs to change it's status to 'decilned'
     // We also need to make hte adjustment in firebase.
     // We also need to reload the pageViewController
+
+// Let's display a properly formatted timer string on the initial viewController

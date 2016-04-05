@@ -27,6 +27,7 @@ class ChallengePageViewController: UIPageViewController, ChallengePrototypeViewC
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
+        delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,34 +36,39 @@ class ChallengePageViewController: UIPageViewController, ChallengePrototypeViewC
             if let firstVC = viewControllerDataSource?.first {
                 self.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             } else {
+                // add a nil case here
                 print("user has no challenges")
             }
         }
     }
     
     func disableScrolling() {
-//        for view in self.view.subviews {
-//            if view.isKindOfClass(UIScrollView) {
-//                if let view = view as? UIScrollView {
-//                    view.scrollEnabled = false
-//                }
-//            }
-//        }
+        for view in self.view.subviews {
+            if view.isKindOfClass(UIScrollView) {
+                if let view = view as? UIScrollView {
+                    view.scrollEnabled = false
+                }
+            }
+        }
     }
     
     func enableScrolling() {
-//        for view in self.view.subviews {
-//            if view.isKindOfClass(UIScrollView) {
-//                if let view = view as? UIScrollView {
-//                    view.scrollEnabled = true
-//                }
-//            }
-//        }
+        for view in self.view.subviews {
+            if view.isKindOfClass(UIScrollView) {
+                if let view = view as? UIScrollView {
+                    view.scrollEnabled = true
+                }
+            }
+        }
     }
     
 }
 
-extension ChallengePageViewController: UIPageViewControllerDataSource {
+extension ChallengePageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+        print("IS GOING TO TRANSITION")
+    }
     
     // MARK: - Required Datasource functions
     
@@ -76,14 +82,13 @@ extension ChallengePageViewController: UIPageViewControllerDataSource {
         guard let currentIndex = UserController.sharedInstance.currentUser?.pendingChallenges.indexOf({$0 == viewController.challenge!}) else {
             return nil
         }
-        let previousIndex = currentIndex - 1
-        guard previousIndex >= 0 else {
+        guard currentIndex > 0 else {
             return nil
         }
-        guard viewControllerDataSource.count > previousIndex else {
+        guard viewControllerDataSource.count > currentIndex else {
             return nil
         }
-        return viewControllerDataSource[previousIndex]
+        return viewControllerDataSource[currentIndex - 1]
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
@@ -128,9 +133,9 @@ extension ChallengePageViewController: UIPageViewControllerDataSource {
     }
     
     func goButtonTapped() {
-        disableScrolling()
+        
     }
-
+    
     
 }
 

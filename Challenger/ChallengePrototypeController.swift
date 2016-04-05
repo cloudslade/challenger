@@ -15,8 +15,6 @@ class ChallengePrototypeViewController: UIViewController {
     @IBOutlet var declineButton: UIButton!
     @IBOutlet var goButton: UIButton!
     
-    var timer = Timer()
-    
     var challenge: Challenge?
     
     override func viewDidLoad() {
@@ -29,15 +27,15 @@ class ChallengePrototypeViewController: UIViewController {
     @IBAction func goButtonTapped(sender: UIButton) {
         // start timer. Lock views
         if let challenge = self.challenge {
-            guard let pageViewController = self.parentViewController as? ChallengePageViewController else {return}
-            timer.setTimer(challenge.totalSeconds, totalSeconds: challenge.totalSeconds)
-            timer.startTimer()
+            guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
+            challenge.timer.setTimer(challenge.totalSeconds, totalSeconds: challenge.totalSeconds)
+            challenge.timer.startTimer()
             pageViewController.goButtonTapped()
         }
     }
     
     @IBAction func declineButtonTapped(sender: UIButton) {
-        guard let pageViewController = self.parentViewController as? ChallengePageViewController else {return}
+        guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
         for challenge in ChallengeController.sharedInstance.allReceivedChallengesForCurrentUser {
             if challenge == self.challenge! {
                 challenge.status = ChallengeStatus.declined
@@ -50,7 +48,7 @@ class ChallengePrototypeViewController: UIViewController {
     }
     
     @objc func updateOnSecond() {
-        updateTimerLabel(timer.timeString)
+        updateTimerLabel(challenge!.timer.timeString)
     }
     
     func updateTimerLabel(time: String) {
@@ -58,8 +56,20 @@ class ChallengePrototypeViewController: UIViewController {
     }
     
     @objc func timerFinished() {
-        guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
-        pageViewController.enableScrolling()
+        guard let pvc = self.parentViewController as? ChallengePageViewController else { return }
+        ChallengeController.sharedInstance.updateReceivedChallengeStatus(self.challenge!, newStatus: ChallengeStatus.failed)
+        if let _ = UserController.sharedInstance.currentUser {
+            if let firstVC = pvc.viewControllerDataSource?.first {
+                pvc.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+            } else {
+                print("user has no challenges")
+            }
+        }
+    }
+    
+    func formatTime() -> String {
+        // We need to divide the seconds into minutes and hours and seconds
+        return ""
     }
     
     func updateWithChallenge(challenge: Challenge?) {
