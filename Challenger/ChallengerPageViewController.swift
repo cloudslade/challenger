@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChallengePageViewController: UIPageViewController, ChallengePrototypeViewControllerParent {
+class ChallengePageViewController: UIPageViewController {
     
     var viewControllerDataSource: [ChallengePrototypeViewController]? {
         var pendingChallengeVCs: [ChallengePrototypeViewController] = []
@@ -27,7 +27,6 @@ class ChallengePageViewController: UIPageViewController, ChallengePrototypeViewC
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,12 +61,23 @@ class ChallengePageViewController: UIPageViewController, ChallengePrototypeViewC
         }
     }
     
+    func disablePageTurn() {
+        for recognizer in self.gestureRecognizers {
+            recognizer.enabled = false
+        }
+    }
+    
+    func enablePageTurn() {
+        for recognizer in self.gestureRecognizers {
+            recognizer.enabled = true
+        }
+    }
+    
 }
 
 extension ChallengePageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
-        print("IS GOING TO TRANSITION")
     }
     
     // MARK: - Required Datasource functions
@@ -122,7 +132,6 @@ extension ChallengePageViewController: UIPageViewControllerDataSource, UIPageVie
     // MARK: - Challenge ViewController Delegate
     
     func declineButtonTapped() {
-        // update the pageViewController
         if let _ = UserController.sharedInstance.currentUser {
             if let firstVC = viewControllerDataSource?.first {
                 self.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
@@ -130,10 +139,6 @@ extension ChallengePageViewController: UIPageViewControllerDataSource, UIPageVie
                 print("user has no challenges")
             }
         }
-    }
-    
-    func goButtonTapped() {
-        
     }
     
     

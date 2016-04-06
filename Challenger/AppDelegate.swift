@@ -36,19 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-// When you get your challange ID's working be sure to update your
-// I need a function in my Firebase Controller that I can use to retrieve data at a specific endpoint.
-// Do all lines of execution have segments of execution inside of them
-
-// Completions are used oftimes because the program is just running and if you have something that takes time to execute the program will just skip it until it is called while it continues executing.
-
-// We may want our most recent challanges to shot up first. When a challange is created bed sure that it is prepended to the receivers array of pending challenges.
 // Consider giving users an initial challange to follow a friend and send a challenge in x amount of time.
-// we will need a way to initialize a users following and followers form firebase. It won't be hard.
 
-// When a user clicks accept the pageViewController needs to lock it's scroll capabilities until the timer is complete.
-// When a user clicks decline the challenge needs to change it's status to 'decilned'
-    // We also need to make hte adjustment in firebase.
-    // We also need to reload the pageViewController
-
-// Let's display a properly formatted timer string on the initial viewController
+// When the user finishes their last challenge the app doesnt remove the viewController. Fix this
+// Allow the user to navigate through the tab bar and come back to their accepted challenge
+// Allow the user to create challenges and return the their accepted challenge
+    // What if the challenge finished while they are on a seperate tab. You would need a case for that as well

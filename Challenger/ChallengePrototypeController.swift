@@ -14,23 +14,38 @@ class ChallengePrototypeViewController: UIViewController {
     @IBOutlet var timerLabel: UILabel!
     @IBOutlet var declineButton: UIButton!
     @IBOutlet var goButton: UIButton!
+    @IBOutlet var timerStartedView: UIView!
+    @IBOutlet var declinedButtonView: UIView!
+    @IBOutlet var goButtonView: UIView!
+    @IBOutlet var abortButton: UIButton!
     
     var challenge: Challenge?
+    static var delegate: ChallengePrototypeViewControllerdelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWithChallenge(challenge)
+        self.toggleViews()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateOnSecond), name: Timer.notificationSecondTick, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(timerFinished), name: Timer.notificationComplete, object: nil)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    @IBAction func abortButtonTapped(sender: UIButton) {
+        
+    }
+    
     @IBAction func goButtonTapped(sender: UIButton) {
-        // start timer. Lock views
         if let challenge = self.challenge {
             guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
             challenge.timer.setTimer(challenge.totalSeconds, totalSeconds: challenge.totalSeconds)
             challenge.timer.startTimer()
-            pageViewController.goButtonTapped()
+            self.toggleViews()
+            pageViewController.disablePageTurn()
+            ChallengePrototypeViewController.delegate?.disableTabs()
         }
     }
     
@@ -56,26 +71,66 @@ class ChallengePrototypeViewController: UIViewController {
     }
     
     @objc func timerFinished() {
-        guard let pvc = self.parentViewController as? ChallengePageViewController else { return }
+        guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
         ChallengeController.sharedInstance.updateReceivedChallengeStatus(self.challenge!, newStatus: ChallengeStatus.failed)
         if let _ = UserController.sharedInstance.currentUser {
-            if let firstVC = pvc.viewControllerDataSource?.first {
-                pvc.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+            if let firstVC = pageViewController.viewControllerDataSource?.first {
+                pageViewController.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             } else {
                 print("user has no challenges")
             }
         }
+        self.toggleViews()
+        pageViewController.enablePageTurn()
+        ChallengePrototypeViewController.delegate?.enableTabs()
     }
     
-    func formatTime() -> String {
-        // We need to divide the seconds into minutes and hours and seconds
-        return ""
+    func toggleViews() {
+        if let challenge = self.challenge {
+            if challenge.timer.isOn {
+                self.goButtonView.hidden = true
+                self.declinedButtonView.hidden = true
+                self.timerStartedView.hidden = false
+            } else {
+                self.goButtonView.hidden = false
+                self.declinedButtonView.hidden = false
+                self.timerStartedView.hidden = true
+            }
+        } else {
+            self.goButtonView.hidden = false
+            self.declinedButtonView.hidden = false
+            self.timerStartedView.hidden = true
+        }
+    }
+    
+    func formatTime(timeInSeconds: NSTimeInterval) -> String {
+        let totalSeconds = Int(timeInSeconds)
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds - (hours * 3600)) / 60
+        let seconds = totalSeconds - (hours * 3600) - (minutes * 60)
+        var hoursString = ""
+        if hours > 0 {
+            hoursString = "\(hours):"
+        }
+        var minutesString = ""
+        if minutes < 10 {
+            minutesString = "0\(minutes):"
+        } else {
+            minutesString = "\(minutes):"
+        }
+        var secondsString = ""
+        if seconds < 10 {
+            secondsString = "0\(seconds)"
+        } else {
+            secondsString = "\(seconds)"
+        }
+        return hoursString + minutesString + secondsString
     }
     
     func updateWithChallenge(challenge: Challenge?) {
         if let challenge = challenge {
             self.challengerTextLabel.text = challenge.text
-            self.timerLabel.text = String(challenge.totalSeconds)
+            self.timerLabel.text = formatTime(challenge.totalSeconds)
             self.declineButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             self.declineButton.backgroundColor = UIColor(colorLiteralRed:0.750, green:0.310, blue:0.345, alpha:1.00)
             self.goButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -85,7 +140,11 @@ class ChallengePrototypeViewController: UIViewController {
     
 }
 
-protocol ChallengePrototypeViewControllerParent {
-    func declineButtonTapped()
-    func goButtonTapped()
+protocol ChallengePrototypeViewControllerdelegate: class {
+    func enableTabs()
+    func disableTabs()
 }
+
+
+
+
