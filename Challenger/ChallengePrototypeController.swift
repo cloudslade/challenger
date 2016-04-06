@@ -21,7 +21,6 @@ class ChallengePrototypeViewController: UIViewController {
     
     var challenge: Challenge?
     static var delegate: ChallengePrototypeViewControllerdelegate?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWithChallenge(challenge)
@@ -35,7 +34,20 @@ class ChallengePrototypeViewController: UIViewController {
     }
     
     @IBAction func abortButtonTapped(sender: UIButton) {
-        
+        guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
+        challenge?.timer.stopTimer()
+        ChallengeController.sharedInstance.updateReceivedChallengeStatus(challenge!, newStatus: ChallengeStatus.completed)
+        ChallengeController.sharedInstance.updateReceivedChallengeStatus(self.challenge!, newStatus: ChallengeStatus.failed)
+        if let _ = UserController.sharedInstance.currentUser {
+            if let firstVC = pageViewController.viewControllerDataSource?.first { // Here is the culprit for that bug.
+                pageViewController.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+            } else {
+                print("user has no challenges")
+            }
+        }
+        self.toggleViews()
+        pageViewController.enablePageTurn()
+        ChallengePrototypeViewController.delegate?.enableTabs()
     }
     
     @IBAction func goButtonTapped(sender: UIButton) {
@@ -74,7 +86,7 @@ class ChallengePrototypeViewController: UIViewController {
         guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
         ChallengeController.sharedInstance.updateReceivedChallengeStatus(self.challenge!, newStatus: ChallengeStatus.failed)
         if let _ = UserController.sharedInstance.currentUser {
-            if let firstVC = pageViewController.viewControllerDataSource?.first {
+            if let firstVC = pageViewController.viewControllerDataSource?.first { // Here is the culprit for that bug.
                 pageViewController.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             } else {
                 print("user has no challenges")
@@ -91,15 +103,18 @@ class ChallengePrototypeViewController: UIViewController {
                 self.goButtonView.hidden = true
                 self.declinedButtonView.hidden = true
                 self.timerStartedView.hidden = false
+                self.abortButton.hidden = false
             } else {
                 self.goButtonView.hidden = false
                 self.declinedButtonView.hidden = false
                 self.timerStartedView.hidden = true
+                self.abortButton.hidden = true
             }
         } else {
             self.goButtonView.hidden = false
             self.declinedButtonView.hidden = false
             self.timerStartedView.hidden = true
+            self.abortButton.hidden = true
         }
     }
     

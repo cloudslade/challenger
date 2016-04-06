@@ -117,11 +117,6 @@ class UserController {
     
 }
 
-
-// get all users in the app
-// modify initializer to init with their following and followers
-// We will need to create a function that queries firebase for all of the users usernames based on the current thext in the search textfield
-
-
-
 // We need to make our user Initializer also initialize with the users followers and following.
+
+

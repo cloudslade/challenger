@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // Consider giving users an initial challange to follow a friend and send a challenge in x amount of time.
-
 // When the user finishes their last challenge the app doesnt remove the viewController. Fix this
 // Allow the user to navigate through the tab bar and come back to their accepted challenge
 // Allow the user to create challenges and return the their accepted challenge
