@@ -35,7 +35,7 @@ class ChallengePageViewController: UIPageViewController {
             if let firstVC = viewControllerDataSource?.first {
                 self.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             } else {
-                // add a nil case here
+                self.setViewControllers([(storyboard?.instantiateViewControllerWithIdentifier("PVCNilCase"))!], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
                 print("user has no challenges")
             }
         }

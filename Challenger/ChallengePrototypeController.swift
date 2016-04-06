@@ -37,11 +37,11 @@ class ChallengePrototypeViewController: UIViewController {
         guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
         challenge?.timer.stopTimer()
         ChallengeController.sharedInstance.updateReceivedChallengeStatus(challenge!, newStatus: ChallengeStatus.completed)
-        ChallengeController.sharedInstance.updateReceivedChallengeStatus(self.challenge!, newStatus: ChallengeStatus.failed)
         if let _ = UserController.sharedInstance.currentUser {
             if let firstVC = pageViewController.viewControllerDataSource?.first { // Here is the culprit for that bug.
                 pageViewController.setViewControllers([firstVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             } else {
+                pageViewController.setViewControllers([(storyboard?.instantiateViewControllerWithIdentifier("PVCNilCase"))!], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
                 print("user has no challenges")
             }
         }
