@@ -46,8 +46,7 @@ class ChallengePrototypeViewController: UIViewController {
             }
         }
         self.toggleViews()
-        pageViewController.enablePageTurn()
-        ChallengePrototypeViewController.delegate?.enableTabs()
+        self.enableUI()
     }
     
     @IBAction func goButtonTapped(sender: UIButton) {
@@ -58,7 +57,9 @@ class ChallengePrototypeViewController: UIViewController {
             self.toggleViews()
             pageViewController.disablePageTurn()
             ChallengePrototypeViewController.delegate?.disableTabs()
+            self.navigationController?.navigationItem.rightBarButtonItem?.enabled = false
         }
+        self.disableUI()
     }
     
     @IBAction func declineButtonTapped(sender: UIButton) {
@@ -82,6 +83,20 @@ class ChallengePrototypeViewController: UIViewController {
         timerLabel.text = time
     }
     
+    func enableUI() {
+        guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
+        ChallengePrototypeViewController.delegate?.enableTabs()
+        self.navigationController?.navigationBar.userInteractionEnabled = true
+        pageViewController.enablePageTurn()
+    }
+    
+    func disableUI() {
+        guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
+        ChallengePrototypeViewController.delegate?.disableTabs()
+        self.navigationController?.navigationBar.userInteractionEnabled = false
+        pageViewController.disablePageTurn()
+    }
+    
     @objc func timerFinished() {
         guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
         ChallengeController.sharedInstance.updateReceivedChallengeStatus(self.challenge!, newStatus: ChallengeStatus.failed)
@@ -93,8 +108,7 @@ class ChallengePrototypeViewController: UIViewController {
             }
         }
         self.toggleViews()
-        pageViewController.enablePageTurn()
-        ChallengePrototypeViewController.delegate?.enableTabs()
+        self.enableUI()
     }
     
     func toggleViews() {
