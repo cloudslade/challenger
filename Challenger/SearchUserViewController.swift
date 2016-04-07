@@ -9,6 +9,7 @@
 import UIKit
 
 class SearchUserViewController: UIViewController, UITableViewDataSource, UserTableViewCellDelegate {
+    @IBOutlet var searchBar: UISearchBar!
     var searchUserDataSource: [User] = []
     
     @IBOutlet var tableView: UITableView!

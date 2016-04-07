@@ -32,6 +32,8 @@ class Firebasecontroller {
     static func saveUser(user: User) {
         let uniqueUserRef = userBase.childByAppendingPath(user.uniqueID)
         let userDic: [String: AnyObject] = [
+            "firstName": user.firstName,
+            "lastName": user.lastName,
             "username": user.username,
             //            "profilePic": user.profilePic,
             ChallengeController.kReceivedChallenges : true,

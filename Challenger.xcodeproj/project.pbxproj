@@ -11,8 +11,6 @@
 		E61A339C1CA311FF004E5505 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61A339A1CA311FF004E5505 /* Main.storyboard */; };
 		E61A339E1CA311FF004E5505 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61A339D1CA311FF004E5505 /* Assets.xcassets */; };
 		E61A33A11CA311FF004E5505 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61A339F1CA311FF004E5505 /* LaunchScreen.storyboard */; };
-		E61A33A91CA31272004E5505 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61A33A81CA31272004E5505 /* Firebase.framework */; };
-		E61A33AA1CA31272004E5505 /* Firebase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61A33A81CA31272004E5505 /* Firebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E61A33AE1CA3128F004E5505 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E61A33AD1CA3128F004E5505 /* libc++.tbd */; };
 		E61A33B01CA3129A004E5505 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E61A33AF1CA3129A004E5505 /* libicucore.tbd */; };
 		E61A33B21CA312A1004E5505 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61A33B11CA312A1004E5505 /* SystemConfiguration.framework */; };
@@ -32,17 +30,18 @@
 		E61A33D11CA34530004E5505 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61A33D01CA34530004E5505 /* UserTableViewCell.swift */; };
 		E66A1CD31CB4703B00483F58 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66A1CD21CB4703B00483F58 /* CreateChallengeViewController.swift */; };
 		E675DE291CAC5265009BA54E /* ChallengerTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E675DE281CAC5265009BA54E /* ChallengerTabBarViewController.swift */; };
+		E67F1BDD1CB6523700E2C1DB /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67F1BDC1CB6523700E2C1DB /* Appearance.swift */; };
+		E67F1BDE1CB6C92000E2C1DB /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61A33A81CA31272004E5505 /* Firebase.framework */; };
 		E6C2FA541CB30619006D2054 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C2FA531CB30619006D2054 /* Timer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E61A33AB1CA31272004E5505 /* Embed Frameworks */ = {
+		E67F1BE01CB6C92000E2C1DB /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E61A33AA1CA31272004E5505 /* Firebase.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +75,7 @@
 		E61A33D01CA34530004E5505 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		E66A1CD21CB4703B00483F58 /* CreateChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengeViewController.swift; sourceTree = "<group>"; };
 		E675DE281CAC5265009BA54E /* ChallengerTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengerTabBarViewController.swift; sourceTree = "<group>"; };
+		E67F1BDC1CB6523700E2C1DB /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		E6C2FA531CB30619006D2054 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,8 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E61A33A91CA31272004E5505 /* Firebase.framework in Frameworks */,
 				E61A33B61CA312AE004E5505 /* CFNetwork.framework in Frameworks */,
+				E67F1BDE1CB6C92000E2C1DB /* Firebase.framework in Frameworks */,
 				E61A33B41CA312A5004E5505 /* Security.framework in Frameworks */,
 				E61A33B21CA312A1004E5505 /* SystemConfiguration.framework in Frameworks */,
 				E61A33B01CA3129A004E5505 /* libicucore.tbd in Frameworks */,
@@ -121,6 +121,7 @@
 				E61A33A21CA311FF004E5505 /* Info.plist */,
 				E61A339A1CA311FF004E5505 /* Main.storyboard */,
 				E61A33961CA311FF004E5505 /* AppDelegate.swift */,
+				E67F1BDC1CB6523700E2C1DB /* Appearance.swift */,
 				E61A33D21CA34538004E5505 /* View */,
 				E61A33C51CA344D6004E5505 /* View Controllers */,
 				E61A33C01CA31338004E5505 /* ModelControllers */,
@@ -195,7 +196,7 @@
 				E61A338F1CA311FF004E5505 /* Sources */,
 				E61A33901CA311FF004E5505 /* Frameworks */,
 				E61A33911CA311FF004E5505 /* Resources */,
-				E61A33AB1CA31272004E5505 /* Embed Frameworks */,
+				E67F1BE01CB6C92000E2C1DB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,6 +269,7 @@
 				E6C2FA541CB30619006D2054 /* Timer.swift in Sources */,
 				E61A33B81CA31315004E5505 /* User.swift in Sources */,
 				E66A1CD31CB4703B00483F58 /* CreateChallengeViewController.swift in Sources */,
+				E67F1BDD1CB6523700E2C1DB /* Appearance.swift in Sources */,
 				E61A33CB1CA3450E004E5505 /* ProfileViewcontroller.swift in Sources */,
 				E61A33D11CA34530004E5505 /* UserTableViewCell.swift in Sources */,
 				E61A33C71CA344F7004E5505 /* ChallengePrototypeController.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 class UserTableViewCell: UITableViewCell {
     @IBOutlet var profilePicImageView: UIImageView!
     @IBOutlet var usernameLabel: UILabel!
+    @IBOutlet var fullnameLabel: UILabel!
     @IBOutlet var followButton: UIButton!
     var user: User?
     weak var delegate: UserTableViewCellDelegate?
@@ -18,6 +19,7 @@ class UserTableViewCell: UITableViewCell {
     func updateWithUser(user: User) {
         self.user = user
         self.usernameLabel.text = user.username
+        self.fullnameLabel.text = user.firstName + " " + user.lastName
         if let _ = user.profilePic {
             
         } else {

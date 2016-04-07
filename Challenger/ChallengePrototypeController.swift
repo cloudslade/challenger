@@ -51,6 +51,7 @@ class ChallengePrototypeViewController: UIViewController {
     
     @IBAction func goButtonTapped(sender: UIButton) {
         if let challenge = self.challenge {
+            // update your challenge status here when you implement timers running while app is on/off
             guard let pageViewController = self.parentViewController as? ChallengePageViewController else { return }
             challenge.timer.setTimer(challenge.totalSeconds, totalSeconds: challenge.totalSeconds)
             challenge.timer.startTimer()

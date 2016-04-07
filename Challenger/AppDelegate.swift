@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //Firebase.defaultConfig().persistenceEnabled = true
+//        AppearanceController.initializeAppearance()
         return true
     }
 
@@ -41,3 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // Allow the user to navigate through the tab bar and come back to their accepted challenge
 // Allow the user to create challenges and return the their accepted challenge
     // What if the challenge finished while they are on a seperate tab. You would need a case for that as well
+
+// get any followed or following users to show up while the user types their name
+
+// Create an app. You can recycle most of the code from here, that will allow users to post things/ challenges they need completed and users that are bored cna have those challenges sent to them.
+
+// If you try to constrain a stack view and cause it to strech there will be one element that stretches to meet the constraint you have it. It could be one button that is really large.

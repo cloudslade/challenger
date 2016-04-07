@@ -128,7 +128,6 @@ extension ChallengePageViewController: UIPageViewControllerDataSource, UIPageVie
         return 2
     }// The selected item reflected in the page indicator.
     
-    
     // MARK: - Challenge ViewController Delegate
     
     func declineButtonTapped() {

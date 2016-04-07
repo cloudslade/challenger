@@ -10,6 +10,8 @@ import UIKit
 
 class User {
     let uniqueID: String
+    var firstName: String
+    var lastName: String
     var username: String
     var profilePic: UIImage?
     var followers: [String] = []
@@ -66,9 +68,11 @@ class User {
         return completedChallengeIDs
     }
     
-    init(uniqueID: String, username: String, profilePic: UIImage?) {
+    init(uniqueID: String, username: String, firstName: String, lastName: String, profilePic: UIImage?) {
         self.uniqueID = uniqueID
         self.username = username
+        self.firstName = firstName
+        self.lastName = lastName
         if let profilePic = profilePic {
             self.profilePic = profilePic
         }
@@ -77,6 +81,8 @@ class User {
     init(userJSON: [String: AnyObject], uniqueID: String) {
         self.uniqueID = uniqueID
         self.username = userJSON["username"] as! String
+        self.firstName = userJSON["firstName"] as! String
+        self.lastName = userJSON["lastName"] as! String
         if let sentChallengesDic = userJSON["sentChallenges"] as? [String: Int] {
             for (challenge, _) in sentChallengesDic {
                 sentChallenges.append(challenge)

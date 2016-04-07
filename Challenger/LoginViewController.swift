@@ -15,7 +15,17 @@ class LoginVewController: UIViewController {
     @IBOutlet var errorHandlingLabel: UILabel!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.emailTextField.becomeFirstResponder()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginVewController.closeTextInput))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    func closeTextInput() {
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
     }
     
     @IBAction func forgotButtonTapped(sender: UIButton) {
