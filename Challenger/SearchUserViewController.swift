@@ -8,13 +8,23 @@
 
 import UIKit
 
-class SearchUserViewController: UIViewController, UITableViewDataSource, UserTableViewCellDelegate {
+class SearchUserViewController: UIViewController, UITableViewDataSource, UserTableViewCellDelegate, UISearchResultsUpdating {
     @IBOutlet var searchBar: UISearchBar!
     var searchUserDataSource: [User] = []
+    
+    override func viewDidLoad() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SearchUserViewController.dismissKeyboards))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
     
     @IBOutlet var tableView: UITableView!
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchUserDataSource.count
+    }
+    
+    func dismissKeyboards() {
+        self.searchBar.resignFirstResponder()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -67,4 +77,25 @@ class SearchUserViewController: UIViewController, UITableViewDataSource, UserTab
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDetail" {
+            if let createChallengeViewController = segue.destinationViewController as? CreateChallengeViewController {
+                if let cell = sender as? UserTableViewCell {
+                    let indexPath = self.tableView.indexPathForCell(cell)
+                    let user = searchUserDataSource[indexPath!.row]
+                    createChallengeViewController.user = user
+                }
+            }
+        }
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        //
+    }
+    
 }
+
+
+
+
+

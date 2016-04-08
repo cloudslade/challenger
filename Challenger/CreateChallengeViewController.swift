@@ -9,18 +9,15 @@
 import UIKit
 
 class CreateChallengeViewController: UIViewController {
-    @IBOutlet var userNameTextField: UITextField!
+    @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var challengeTextView: UITextView!
     @IBOutlet var timeTextField: UITextField!
-    @IBOutlet var timePicker: UIPickerView!
-    
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+    @IBOutlet var pickerView: UIPickerView!
+    var user: User?
     
     @IBAction func sendChallengeButtonTapped(sender: UIButton) {
        ChallengeController.sharedInstance.createChallenge("Brush your teeth", totalSeconds: 34, senderID: "1f5c88e5-0a94-46bc-918c-05b17b5687aa", receiverID: "d2c0f814-579c-4ec9-b47c-86dac5a3ef2e", status: ChallengeStatus.pending)
-//        ChallengeController.sharedInstance.createChallenge("Do twenty pushups", totalSeconds: 20, senderID: "1f5c88e5-0a94-46bc-918c-05b17b5687aa", receiverID: "d2c0f814-579c-4ec9-b47c-86dac5a3ef2e", status: ChallengeStatus.pending)
+        ChallengeController.sharedInstance.createChallenge("Do twenty pushups", totalSeconds: 20, senderID: "1f5c88e5-0a94-46bc-918c-05b17b5687aa", receiverID: "d2c0f814-579c-4ec9-b47c-86dac5a3ef2e", status: ChallengeStatus.pending)
 //        ChallengeController.sharedInstance.createChallenge("text your mom/dad", totalSeconds: 5, senderID: "1f5c88e5-0a94-46bc-918c-05b17b5687aa", receiverID: "d2c0f814-579c-4ec9-b47c-86dac5a3ef2e", status: ChallengeStatus.pending)
 //        ChallengeController.sharedInstance.createChallenge("Read the first chapter of Moby Dick", totalSeconds: 1000, senderID: "1f5c88e5-0a94-46bc-918c-05b17b5687aa", receiverID: "d2c0f814-579c-4ec9-b47c-86dac5a3ef2e", status: ChallengeStatus.pending)
 //        ChallengeController.sharedInstance.createChallenge("delete four emails", totalSeconds: 120, senderID: "1f5c88e5-0a94-46bc-918c-05b17b5687aa", receiverID: "d2c0f814-579c-4ec9-b47c-86dac5a3ef2e", status: ChallengeStatus.pending)
@@ -43,9 +40,24 @@ class CreateChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeTextField.inputView = timePicker
-//        self.userNameTextField.becomeFirstResponder()
-        
+        if let user = self.user {
+            self.updateWithUser(user)
+        }
+        self.timeTextField.inputView = self.pickerView
+        self.challengeTextView.becomeFirstResponder()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateChallengeViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        challengeTextView.resignFirstResponder()
+        timeTextField.resignFirstResponder()
+    }
+    
+    func updateWithUser(user: User) {
+        self.usernameLabel.text = user.username
+        self.title = user.username
     }
     
 }
