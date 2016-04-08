@@ -10,7 +10,10 @@ import UIKit
 
 class AppearanceController {
     static func initializeAppearance() {
-        UIView.appearance().backgroundColor = UIColor.bombGray()
+//        UINavigationBar.appearance().backgroundColor = UIColor.bombOrange()
+//        UITabBar.appearance().backgroundColor = UIColor.bombGray()
+        UITabBar.appearance().barTintColor = UIColor.whiteColor()
+        UITabBar.appearance().tintColor = UIColor.bombRed()
     }
 }
 

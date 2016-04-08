@@ -42,6 +42,7 @@ class CreateAccountViewController: UIViewController {
         
         UserController.sharedInstance.createUser(username, email: email, firstName: firstName, lastName: lastName, password: password, profilePic: nil, completion: { (user) -> Void in
             UserController.sharedInstance.setCurrentUser(user)
+            ChallengeController.sharedInstance.createInitialChallenges("48e89609-c4e0-4362-abf3-efe6ad85ebe4", receiverID: user.uniqueID)
             self.navigationController?.navigationBarHidden = true
             self.performSegueWithIdentifier("toBeginAgain", sender: nil)
         })

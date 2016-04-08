@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //Firebase.defaultConfig().persistenceEnabled = true
-//        AppearanceController.initializeAppearance()
+        AppearanceController.initializeAppearance()
         return true
     }
 

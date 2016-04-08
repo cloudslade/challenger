@@ -21,6 +21,7 @@ class ChallengePrototypeViewController: UIViewController {
     
     var challenge: Challenge?
     static var delegate: ChallengePrototypeViewControllerdelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWithChallenge(challenge)
@@ -119,11 +120,14 @@ class ChallengePrototypeViewController: UIViewController {
                 self.declinedButtonView.hidden = true
                 self.timerStartedView.hidden = false
                 self.abortButton.hidden = false
+                self.abortButton.backgroundColor = UIColor.bombOrange()
             } else {
                 self.goButtonView.hidden = false
                 self.declinedButtonView.hidden = false
                 self.timerStartedView.hidden = true
                 self.abortButton.hidden = true
+                self.declineButton.backgroundColor = UIColor.bombRed()
+                self.goButton.backgroundColor = UIColor.bombYellow()
             }
         } else {
             self.goButtonView.hidden = false
@@ -160,7 +164,7 @@ class ChallengePrototypeViewController: UIViewController {
     func updateWithChallenge(challenge: Challenge?) {
         if let challenge = challenge {
             self.challengerTextLabel.text = challenge.text
-            self.timerLabel.text = formatTime(challenge.totalSeconds)
+            self.timerLabel.text = self.formatTime(challenge.totalSeconds)
             self.declineButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             self.declineButton.backgroundColor = UIColor(colorLiteralRed:0.750, green:0.310, blue:0.345, alpha:1.00)
             self.goButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)

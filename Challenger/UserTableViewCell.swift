@@ -23,7 +23,7 @@ class UserTableViewCell: UITableViewCell {
         if let _ = user.profilePic {
             
         } else {
-            self.profilePicImageView.image = UIImage(named: "profileDefault")
+            self.profilePicImageView.image = UIImage(named: "profile Default")
         }
         if UserController.sharedInstance.currentUser?.following.indexOf(user.uniqueID) == nil {
             self.followButton.setTitle("Follow", forState: UIControlState.Normal)
