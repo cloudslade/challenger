@@ -28,6 +28,10 @@ class ChallengePrototypeViewController: UIViewController {
         self.toggleViews()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateOnSecond), name: Timer.notificationSecondTick, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(timerFinished), name: Timer.notificationComplete, object: nil)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "BackGround Large Explosion Iteration 1")!)
+        self.declineButton.tintColor = UIColor.whiteColor()
+        self.goButton.tintColor = UIColor.whiteColor()
+        self.abortButton.backgroundColor = UIColor.greenColor()
     }
     
     override func viewWillAppear(animated: Bool) {

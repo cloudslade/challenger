@@ -13,14 +13,16 @@ class LoginVewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var errorHandlingLabel: UILabel!
+    @IBOutlet var privacyPolicyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailTextField.becomeFirstResponder()
-        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "BackGround Large Explosion Iteration 1")!)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginVewController.closeTextInput))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        self.privacyPolicyButton.alpha = 0.7
     }
     
     func closeTextInput() {
@@ -69,7 +71,7 @@ class LoginVewController: UIViewController {
                     if let user = user {
                         UserController.sharedInstance.setCurrentUser(user)
                         ChallengeController.sharedInstance.setReceivedChallengesForUser ({
-                            ChallengeController.sharedInstance.setSentChallengesForUser({
+                             ChallengeController.sharedInstance.setSentChallengesForUser({
                                 UserController.getFollowingForUser(uniqueUserID, completion: { (following) in
                                     UserController.getFollowersForUser(uniqueUserID, completion: { (followers) in
                                         UserController.sharedInstance.currentUser?.following = following

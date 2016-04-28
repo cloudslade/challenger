@@ -27,6 +27,7 @@ class ChallengePageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
+        self.navigationController?.navigationBar.barTintColor = UIColor.bombAlphaBlack()
     }
     
     override func viewWillAppear(animated: Bool) {

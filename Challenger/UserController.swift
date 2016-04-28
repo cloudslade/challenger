@@ -75,7 +75,6 @@ class UserController {
         })
     }
     
-    // needs testing
     func followUser(userID: String) {
         if let currentUser = UserController.sharedInstance.currentUser {
             currentUser.following.append(userID)
@@ -89,7 +88,6 @@ class UserController {
         }
     }
     
-    // needs testing
     func unfollowUser(userID: String) {
         if let currentUser = UserController.sharedInstance.currentUser {
             if let followingIndex = currentUser.following.indexOf(userID) {
@@ -102,7 +100,6 @@ class UserController {
         }
     }
     
-    // needs testing
     static func getAllUsers(completion: (allUsers: [User]?) -> Void) {
         let endpoint = "users"
         var arrayOfAllUsers: [User] = []
@@ -116,7 +113,5 @@ class UserController {
     }
     
 }
-
-// We need to make our user Initializer also initialize with the users followers and following.
 
 

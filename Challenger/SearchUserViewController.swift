@@ -32,6 +32,7 @@ class SearchUserViewController: UIViewController, UITableViewDataSource, UserTab
         let user = searchUserDataSource[indexPath.row]
         cell.updateWithUser(user)
         cell.delegate = self
+        cell.backgroundColor = UIColor.bombGray()
         return cell
     }
     

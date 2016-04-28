@@ -33,6 +33,7 @@
 		E67F1BDD1CB6523700E2C1DB /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67F1BDC1CB6523700E2C1DB /* Appearance.swift */; };
 		E67F1BDE1CB6C92000E2C1DB /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61A33A81CA31272004E5505 /* Firebase.framework */; };
 		E6C2FA541CB30619006D2054 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C2FA531CB30619006D2054 /* Timer.swift */; };
+		E6C929D21CD09E5D008F74D8 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C929D11CD09E5D008F74D8 /* PrivacyPolicyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +78,7 @@
 		E675DE281CAC5265009BA54E /* ChallengerTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengerTabBarViewController.swift; sourceTree = "<group>"; };
 		E67F1BDC1CB6523700E2C1DB /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		E6C2FA531CB30619006D2054 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		E6C929D11CD09E5D008F74D8 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				E61A33CA1CA3450E004E5505 /* ProfileViewcontroller.swift */,
 				E61A33CC1CA34515004E5505 /* LoginViewController.swift */,
 				E61A33CE1CA3451D004E5505 /* CreateAccountViewController.swift */,
+				E6C929D11CD09E5D008F74D8 /* PrivacyPolicyViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				E61A33BF1CA31332004E5505 /* UserController.swift in Sources */,
 				E61A33BD1CA3132B004E5505 /* ChallengerController.swift in Sources */,
 				E61A33C91CA34506004E5505 /* ChallengerPageViewController.swift in Sources */,
+				E6C929D21CD09E5D008F74D8 /* PrivacyPolicyViewController.swift in Sources */,
 				E61A33BA1CA3131D004E5505 /* Challenger.swift in Sources */,
 				E61A33CD1CA34515004E5505 /* LoginViewController.swift in Sources */,
 			);
@@ -407,6 +411,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dylanslade.ChallengeBombs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -426,6 +431,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dylanslade.ChallengeBombs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

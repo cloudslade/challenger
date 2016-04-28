@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController {
         let tapGesture = UIGestureRecognizer(target: self, action: #selector(ProfileViewController.dismissKeyboards))
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "BackGround Large Explosion Iteration 1")!)
     }
     
     @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
@@ -44,6 +45,7 @@ class ProfileViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         self.updateWithCurrentUser()
+        self.navigationController?.navigationBar.barTintColor = UIColor.bombAlphaBlack()
     }
     
     func updateWithCurrentUser() {

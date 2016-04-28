@@ -10,10 +10,15 @@ import UIKit
 
 class AppearanceController {
     static func initializeAppearance() {
-//        UINavigationBar.appearance().backgroundColor = UIColor.bombOrange()
-//        UITabBar.appearance().backgroundColor = UIColor.bombGray()
-        UITabBar.appearance().barTintColor = UIColor.whiteColor()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        UINavigationBar.appearance().tintColor = UIColor.bombOrange()
+        UINavigationBar.appearance().barTintColor = UIColor.bombAlphaBlack()
+        UITabBar.appearance().barTintColor = UIColor.bombAlphaBlack()
         UITabBar.appearance().tintColor = UIColor.bombRed()
+        UIButton.appearance().tintColor = UIColor.bombYellow()
+        UITextField.appearance().backgroundColor = UIColor.bombGray()
+        UITextField.appearance().tintColor = UIColor.bombYellow()
+        UILabel.appearanceWhenContainedInInstancesOfClasses([UITextField.self]).textColor = UIColor.whiteColor()
     }
 }
 
@@ -32,6 +37,10 @@ extension UIColor {
     
     static func bombRed() -> UIColor {
         return UIColor(colorLiteralRed:0.859, green:0.208, blue:0.098, alpha:1.00)
+    }
+    
+    static func bombAlphaBlack() -> UIColor {
+        return UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
     }
     
 }

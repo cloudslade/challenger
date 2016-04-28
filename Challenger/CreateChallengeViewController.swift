@@ -57,6 +57,7 @@ class CreateChallengeViewController: UIViewController, UIPickerViewDelegate, UIP
         let tap = UITapGestureRecognizer(target: self, action: #selector(CreateChallengeViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "BackGround Large Explosion Iteration 1")!)
     }
     
     func totalSeconds(hours: Int, minutes: Int, seconds: Int) -> Int {

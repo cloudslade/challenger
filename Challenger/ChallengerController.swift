@@ -127,13 +127,13 @@ class ChallengeController {
     }
     
     func createInitialChallenges(senderID: String, receiverID: String) {
-        ChallengeController.sharedInstance.createChallenge("Welcome to Challenge Bomber! To start the timed challenge tap the 'Go' button. To Complete tap the complete button. -(Dylan)", totalSeconds: 10, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
-        ChallengeController.sharedInstance.createChallenge("When a challenge is in session navigation is locked. -(Dylan)", totalSeconds: 4, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
-        ChallengeController.sharedInstance.createChallenge("Send me your thoughts about the app and how I can make it better. Thanks! - (Dylan)", totalSeconds: 1000, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
-        ChallengeController.sharedInstance.createChallenge("Do 20 pushups - (Dylan)", totalSeconds: 20, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
-        ChallengeController.sharedInstance.createChallenge("Find something that makes you happy. - (Dylan)", totalSeconds: 300, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
-        ChallengeController.sharedInstance.createChallenge("Make a paper football. - (Dylan)", totalSeconds: 45, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
-        ChallengeController.sharedInstance.createChallenge("Drink an oz of water - (Dylan)", totalSeconds: 400, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
+        ChallengeController.sharedInstance.createChallenge("Welcome to Challenge Bomber! To start the timed challenge tap the 'Go' button. To Complete tap the complete button. -Dylan", totalSeconds: 10, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
+        ChallengeController.sharedInstance.createChallenge("When a challenge is in session navigation is locked. - Dylan", totalSeconds: 4, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
+        ChallengeController.sharedInstance.createChallenge("Send me your thoughts about the app and how I can make it better. Thanks! - Dylan", totalSeconds: 180, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
+        ChallengeController.sharedInstance.createChallenge("Do 20 pushups - Dylan", totalSeconds: 20, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
+        ChallengeController.sharedInstance.createChallenge("Find something that makes you happy. - Dylan", totalSeconds: 300, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
+        ChallengeController.sharedInstance.createChallenge("Make a paper football. - Dylan", totalSeconds: 45, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
+        ChallengeController.sharedInstance.createChallenge("Drink an oz of water - Dylan", totalSeconds: 400, senderID: senderID, receiverID: receiverID, status: ChallengeStatus.pending)
     }
     
 }
