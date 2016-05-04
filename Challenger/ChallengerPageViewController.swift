@@ -2,14 +2,14 @@
 //  ChallengerPageViewController.swift
 //  Challenger
 //
-//  Created by Dylan Slade on 3/23/16.
+//  Created by Dylan Slade on 3/23/16
+
 //  Copyright © 2016 Dylan Slade. All rights reserved.
 //
 
 import UIKit
 
 class ChallengePageViewController: UIPageViewController {
-    
     var viewControllerDataSource: [ChallengePrototypeViewController]? {
         var pendingChallengeVCs: [ChallengePrototypeViewController] = []
         if let pendingChallenges = UserController.sharedInstance.currentUser?.pendingChallenges {

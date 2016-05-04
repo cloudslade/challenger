@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar hidden="YES" contentMode="redraw" placeholder="Search Users" translatesAutoresizingMaskIntoConstraints="NO" id="mWD-9K-uBn">
+                            <searchBar contentMode="redraw" placeholder="Search Users" translatesAutoresizingMaskIntoConstraints="NO" id="mWD-9K-uBn">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -167,7 +167,7 @@
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QVj-9z-xii">
                                         <rect key="frame" x="0.0" y="50" width="560" height="126"/>
-                                        <color key="backgroundColor" red="0.21625664893617025" green="0.21625664893617025" blue="0.21625664893617025" alpha="0.50206096625766872" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.17754737367021278" green="0.17754737367021278" blue="0.17754737367021278" alpha="0.69699003067484666" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.98471783577127658" green="0.97446035831532585" blue="0.97446035831532585" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
